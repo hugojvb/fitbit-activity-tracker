@@ -49,8 +49,8 @@ class Grid extends Component {
           <p>Calorie Intake</p>
         </div>
         <div className="bg1">
-          <h2>50</h2>
-          <p>(mins. Active)</p>
+          <i className="fas fa-history fa-2x" />
+          <p>Activity</p>
         </div>
         <div className="bg2">
           <i className="fas fa-heartbeat fa-2x" />
