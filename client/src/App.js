@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
-import Grid from "./Grid";
+import Grid from "./components/Grid";
+import Auth from "./components/Auth";
 
 function App() {
   return (
