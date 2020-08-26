@@ -1,0 +1,27 @@
+#navbar {
+  display: flex;
+  padding: 20px;
+  background-color: #222;
+  height: 60px;
+  color: white;
+  border-bottom: 1px double darkgreen;
+}
+
+#navbar > h4 {
+  margin-left: 10px;
+  text-decoration: none;
+}
+
+#navbar > .signout {
+  margin-left: auto;
+}
+
+#navbar > .signout:hover {
+  opacity: 0.7;
+  transform: scale(0.99);
+  cursor: pointer;
+}
+
+#navbar > #logo {
+  margin: 5px;
+}
