@@ -1,15 +1,21 @@
-import React from "react";
+import React, { Fragment } from "react";
 import "./App.css";
 import Grid from "./components/Grid";
-import Auth from "./components/Auth";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Login from "./components/Login";
 import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <Grid />
-    </div>
+    <Router>
+      <Fragment>
+        <Navbar />
+        <Switch>
+          <Route exact path="/" component={Login} />
+          <Route exact path="/home" component={Grid} />
+        </Switch>
+      </Fragment>
+    </Router>
   );
 }
 

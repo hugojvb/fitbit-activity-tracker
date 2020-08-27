@@ -1,0 +1,109 @@
+input {
+  padding: 10px;
+  border-radius: 2px;
+}
+
+.form-control {
+  margin: 20vh auto;
+  left: 50%;
+  top: 50%;
+  text-align: center;
+  width: 400px;
+}
+
+article {
+  /* box-shadow: 10px 10px #222; */
+  border: 1px solid #111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(54, 54, 54);
+  border-radius: 5px;
+}
+
+.form-control > * {
+  padding: 20px;
+}
+
+.email {
+  margin-top: 20px;
+}
+
+.password {
+  margin-top: 5px;
+}
+
+.email > label {
+  margin-top: 10vh;
+}
+
+.email > input {
+  border: 1px solid #222;
+  width: 230px;
+  margin-top: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.email > input:hover {
+  border-color: lightseagreen;
+}
+
+.email > input:focus {
+  background-color: #333;
+  color: lightseagreen;
+}
+
+.password > input {
+  border: 1px solid #222;
+  width: 230px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.password > input:hover {
+  border-color: lightseagreen;
+}
+
+.password > input:focus {
+  background-color: #333;
+  color: lightseagreen;
+}
+
+label {
+  font-size: 1rem;
+  margin-right: 5px;
+}
+
+.btn {
+  background: linear-gradient(90deg, #333, #222);
+  border: 1px solid #222;
+  color: white;
+  margin: 15px;
+  width: 230px;
+  margin-top: 20px;
+  border-radius: 5px;
+  color: lightseagreen;
+}
+
+.btn:hover {
+  cursor: pointer;
+  opacity: 0.7;
+  border-color: lightseagreen;
+}
+
+legend {
+  color: white;
+}
+
+body {
+  background-image: url(../assets/loginbg.jpg);
+  background-blend-mode: exclusion;
+  background-size: cover;
+  background-position-y: -180px;
+}

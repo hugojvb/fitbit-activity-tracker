@@ -4,12 +4,13 @@
   background-color: #222;
   height: 60px;
   color: white;
-  border-bottom: 1px double darkgreen;
+  border-bottom: 1px double lightseagreen;
 }
 
 #navbar > h4 {
   margin-left: 10px;
   text-decoration: none;
+  cursor: pointer;
 }
 
 #navbar > .signout {
@@ -17,11 +18,12 @@
 }
 
 #navbar > .signout:hover {
-  opacity: 0.7;
+  color: lightseagreen;
   transform: scale(0.99);
   cursor: pointer;
 }
 
 #navbar > #logo {
   height: 30px;
+  cursor: pointer;
 }

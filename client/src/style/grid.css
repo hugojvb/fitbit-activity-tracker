@@ -21,7 +21,7 @@
 
 .grid-container > div {
   cursor: pointer;
-  height: 21.5vh;
+  height: 21.3vh;
   background-attachment: fixed;
   display: flex;
   flex-direction: column;
