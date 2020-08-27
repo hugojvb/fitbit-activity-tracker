@@ -2,14 +2,12 @@
   margin: 10px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 7px;
+  grid-gap: 5px;
 }
 
 .bg1 {
   background-image: url(../assets/bg1.jpg);
   background-size: cover;
-  filter: hue-rotate(35deg);
-  filter: brightness(1);
 }
 
 .bg2 {
@@ -21,7 +19,7 @@
 
 .grid-container > div {
   cursor: pointer;
-  height: 21.3vh;
+  height: 21.7vh;
   background-attachment: fixed;
   display: flex;
   flex-direction: column;
@@ -32,7 +30,6 @@
 }
 
 .grid-container > div:hover {
-  opacity: 0.7;
   transform: scale(0.98);
 }
 

@@ -1,7 +1,7 @@
 #navbar {
   display: flex;
   padding: 20px;
-  background-color: #222;
+  background: linear-gradient(45deg, #222, #111);
   height: 60px;
   color: white;
   border-bottom: 1px double lightseagreen;
@@ -10,7 +10,6 @@
 #navbar > h4 {
   margin-left: 10px;
   text-decoration: none;
-  cursor: pointer;
 }
 
 #navbar > .signout {
