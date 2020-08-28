@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get(
   "/signin",
-  passport.authenticate("fitbit", function (req, res) {
+  passport.authenticate("fitbit", (req, res) => {
     res.json({ id: req.user.id, username: req.user.username });
   })
 );
