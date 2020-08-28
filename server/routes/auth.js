@@ -1,7 +1,4 @@
-const express = require("express");
 const router = express.Router();
-
-const app = express();
 
 //Authenticate Requests
 
@@ -19,7 +16,3 @@ app.get(
     failureRedirect: "/auth/fitbit/failure",
   })
 );
-
-const PORT = process.env.PORT || 5000;
-
-app.listen(PORT);
