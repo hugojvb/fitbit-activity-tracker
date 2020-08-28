@@ -1,16 +1,24 @@
-const FitbitStrategy = require("passport-fitbit-oauth2").FitbitOAuth2Strategy;
+const express = require("express");
+const passport = require("passport");
+const router = express.Router();
 
-passport.use(
-  new FitbitStrategy(
-    {
-      clientID: FITBIT_CLIENT_ID,
-      clientSecret: FITBIT_CLIENT_SECRET,
-      callbackURL: "http://yourdormain:3000/auth/fitbit/callback",
-    },
-    function (accessToken, refreshToken, profile, done) {
-      User.findOrCreate({ fitbitId: profile.id }, function (err, user) {
-        return done(err, user);
-      });
-    }
-  )
+//Router using passport.authenticate()
+
+router.get(
+  "/signin",
+  passport.authenticate("fitbit", function (req, res) {
+    res.json({ id: req.user.id, username: req.user.username });
+  })
 );
+
+router.post(
+  "/signin",
+  passport.authenticate("fitbit", {
+    successRedirect: "/grid/:user",
+    failureRedirect: "/signin",
+    failureFlash: "Invalid username or password.",
+    successFlash: "Welcome!",
+  })
+);
+
+module.exports = router;
