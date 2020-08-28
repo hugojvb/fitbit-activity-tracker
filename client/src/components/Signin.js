@@ -1,20 +1,20 @@
 import React, { Component } from "react";
-import "../style/login.css";
+import "../style/signin.css";
 
 class Login extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      name: "",
       email: "",
+      password: "",
     };
   }
 
-  onChange = (key, value) => {
-    this.setState({
-      [key]: value,
-      [key]: value,
-    });
+  onChange = (e) => this.setState({ [e.target.name]: e.target.value });
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    this.setState({ email: "" });
   };
 
   render() {
@@ -24,34 +24,36 @@ class Login extends Component {
           <article>
             <legend>Sign in</legend>
             <div className="email">
-              <label htmlfor="email" value="email">
+              <label htmlFor="email" value="email">
                 E-mail
               </label>
               <input
                 type="email"
                 name="email"
                 value={this.state.email}
-                placeholder="Please enter your email"
-                onChange={(e) => this.onChange("email", e.target.value)}
+                placeholder="Your email..."
+                onChange={this.onChange}
+                required
               />
             </div>
             <div className="password">
-              <label htmlfor="password" value="password">
+              <label htmlFor="password" value="password">
                 Password
               </label>
               <input
                 type="password"
                 name="password"
                 value={this.state.password}
-                placeholder="Please enter your password"
-                onChange={(e) => this.onChange("password", e.target.value)}
+                placeholder="Your password..."
+                onChange={this.onChange}
+                required
               />
             </div>
             <input
               type="submit"
               className="btn"
-              onClick={(e) => this.onClick}
-              value="Login"
+              onClick={this.onSubmit}
+              value="Sign in"
             />
           </article>
         </form>
