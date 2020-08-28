@@ -25,7 +25,7 @@ passport.use(
   )
 );
 
-// Middleware
+// Middleware required by passport
 
 app.configure(() => {
   app.use(passport.initialize());
