@@ -7,16 +7,16 @@ const app = express();
 
 // Routes
 
-app.use("/signin", require("./routes/user"));
+app.use("/signin", require("./routes/auth.js"));
 
 // Passport strategy for Fitbit OAuth 2.0
 
 passport.use(
   new FitbitStrategy(
     {
-      clientID: config.get(FITBIT_CLIENT_ID),
-      clientSecret: config.get(FITBIT_CLIENT_SECRET),
-      callbackURL: config.get(CALLBACK_URL),
+      clientID: "22BRPY",
+      clientSecret: "0b66014118b0c6c3e1edc679ebecd2d0",
+      callbackURL: "http://localhost:5000",
     },
     (accessToken, refreshToken, profile, done) => {
       User.findOrCreate({ fitbitId: profile.id }, (err, user) => {
@@ -25,13 +25,6 @@ passport.use(
     }
   )
 );
-
-// Middleware required by passport
-
-app.configure(() => {
-  app.use(passport.initialize());
-  app.use(passport.session());
-});
 
 //PORT Listening at 5000
 
