@@ -7,7 +7,7 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
-import Signin from "./components/Signin";
+import Signup from "./components/Signup";
 import Navbar from "./components/Navbar";
 
 class App extends Component {
@@ -18,9 +18,9 @@ class App extends Component {
           <Navbar />
           <Switch>
             <Route exact path="/">
-              <Redirect to="/signin" />
+              <Redirect to="/signup" />
             </Route>
-            <Route exact path="/signin" component={Signin} />
+            <Route exact path="/signup" component={Signup} />
             <Route exact path="/grid" component={Grid} />
           </Switch>
         </Fragment>

@@ -1,0 +1,58 @@
+body {
+  background-image: url(../assets/loginbg.jpg);
+  background-blend-mode: exclusion;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.start {
+  margin: 20vh auto;
+  left: 50%;
+  top: 50%;
+  text-align: center;
+  width: 50vw;
+}
+
+article {
+  border: 1px solid #111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(45deg, #333, #111);
+  border-radius: 5px;
+  padding: 25px;
+}
+
+.btn {
+  background: linear-gradient(90deg, #333, #222);
+  border: 1px solid #111;
+  color: white;
+  margin: 15px;
+  width: 30vw;
+  margin-top: 20px;
+  border-radius: 5px;
+  color: lightseagreen;
+}
+
+.btn:hover {
+  cursor: pointer;
+  opacity: 0.7;
+  border-color: lightseagreen;
+}
+
+legend {
+  color: lightseagreen;
+  font-size: xx-large;
+}
+
+a {
+  text-decoration: none;
+  padding: 10px;
+}
+
+.start__exp {
+  margin-top: 30px;
+  font-weight: 400;
+  font-size: medium;
+  margin-bottom: 15px;
+}
