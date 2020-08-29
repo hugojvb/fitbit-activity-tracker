@@ -1,6 +1,7 @@
 const express = require("express");
 const FitbitStrategy = require("passport-fitbit-oauth2").FitbitOAuth2Strategy;
 const passport = require("passport");
+const config = require("config");
 
 const app = express();
 
@@ -9,13 +10,13 @@ const app = express();
 app.use("/signin", require("./routes/user"));
 
 // Passport strategy for Fitbit OAuth 2.0
-as;
+
 passport.use(
   new FitbitStrategy(
     {
-      clientID: FITBIT_CLIENT_ID,
-      clientSecret: FITBIT_CLIENT_SECRET,
-      callbackURL: "http://localhost:5000/signin",
+      clientID: config.get(FITBIT_CLIENT_ID),
+      clientSecret: config.get(FITBIT_CLIENT_SECRET),
+      callbackURL: config.get(CALLBACK_URL),
     },
     (accessToken, refreshToken, profile, done) => {
       User.findOrCreate({ fitbitId: profile.id }, (err, user) => {
