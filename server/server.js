@@ -7,11 +7,12 @@ const app = express();
 
 // Routes
 
-app.use("/signin", require("./routes/auth.js"));
+app.use("/signup", require("./routes/auth.js"));
+app.use("/grid/:fitbitId", require("./routes/auth.js"));
 
 // Passport strategy for Fitbit OAuth 2.0
 
-passport.use(
+module.exports = passport.use(
   new FitbitStrategy(
     {
       clientID: "22BRPY",
@@ -25,6 +26,33 @@ passport.use(
     }
   )
 );
+
+// Express Session
+
+app.use(
+  session({
+    secret: "secret",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+
+// Passport Initializer
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Serialize user
+
+passport.serializeUser(function (user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function (id, done) {
+  User.findById(id, function (err, user) {
+    done(err, user);
+  });
+});
 
 //PORT Listening at 5000
 

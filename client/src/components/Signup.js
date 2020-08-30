@@ -23,8 +23,7 @@ class Login extends Component {
           <article>
             <legend>Welcome!</legend>
             <h6 className="start__exp">
-              This is an app which helps you track your physical activity with
-              Fitbit!
+              This is an app that helps you track your activity with Fitbit!
             </h6>
             <a
               target="_blank"
