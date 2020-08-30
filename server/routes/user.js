@@ -5,7 +5,7 @@ const router = express.Router();
 //Router using passport.authenticate()
 
 router.get(
-  "/grid/:fitbitId",
+  "/:authcode",
   passport.authenticate("fitbit", {
     scope: ["activity", "heartrate", "location", "profile"],
   })

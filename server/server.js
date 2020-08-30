@@ -1,7 +1,7 @@
 const express = require("express");
 const FitbitStrategy = require("passport-fitbit-oauth2").FitbitOAuth2Strategy;
 const passport = require("passport");
-const config = require("config");
+const session = require("express-session");
 
 const app = express();
 
@@ -9,6 +9,21 @@ const app = express();
 
 app.use("/signup", require("./routes/auth.js"));
 app.use("/grid/:fitbitId", require("./routes/auth.js"));
+
+// Express Session
+
+app.use(
+  session({
+    secret: "secret",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+
+// Passport Initializer
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Passport strategy for Fitbit OAuth 2.0
 
@@ -26,21 +41,6 @@ module.exports = passport.use(
     }
   )
 );
-
-// Express Session
-
-app.use(
-  session({
-    secret: "secret",
-    resave: true,
-    saveUninitialized: true,
-  })
-);
-
-// Passport Initializer
-
-app.use(passport.initialize());
-app.use(passport.session());
 
 // Serialize user
 

@@ -7,7 +7,7 @@ const router = express.Router();
 router.get(
   "/signin",
   passport.authenticate("fitbit", {
-    //do something
+    successMessage()
   })
 );
 
