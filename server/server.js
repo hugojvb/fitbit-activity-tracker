@@ -1,6 +1,6 @@
 const express = require("express");
-const FitbitStrategy = require("passport-fitbit-oauth2").FitbitOAuth2Strategy;
-const passport = require("passport");
+// const FitbitStrategy = require("passport-fitbit-oauth2").FitbitOAuth2Strategy;
+// const passport = require("passport");
 const session = require("express-session");
 
 const app = express();
@@ -22,37 +22,37 @@ app.use(
 
 // Passport Initializer
 
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 // Passport strategy for Fitbit OAuth 2.0
 
-module.exports = passport.use(
-  new FitbitStrategy(
-    {
-      clientID: "22BRPY",
-      clientSecret: "0b66014118b0c6c3e1edc679ebecd2d0",
-      callbackURL: "http://localhost:5000",
-    },
-    (accessToken, refreshToken, profile, done) => {
-      User.findOrCreate({ fitbitId: profile.id }, (err, user) => {
-        return done(err, user);
-      });
-    }
-  )
-);
+// module.exports = passport.use(
+//   new FitbitStrategy(
+//     {
+//       clientID: "22BRPY",
+//       clientSecret: "0b66014118b0c6c3e1edc679ebecd2d0",
+//       callbackURL: "http://localhost:5000",
+//     },
+//     (accessToken, refreshToken, profile, done) => {
+//       User.findOrCreate({ fitbitId: profile.id }, (err, user) => {
+//         return done(err, user);
+//       });
+//     }
+//   )
+// );
 
 // Serialize user
 
-passport.serializeUser(function (user, done) {
-  done(null, user.id);
-});
+// passport.serializeUser(function (user, done) {
+//   done(null, user.id);
+// });
 
-passport.deserializeUser(function (id, done) {
-  User.findById(id, function (err, user) {
-    done(err, user);
-  });
-});
+// passport.deserializeUser(function (id, done) {
+//   User.findById(id, function (err, user) {
+//     done(err, user);
+//   });
+// });
 
 //PORT Listening at 5000
 
