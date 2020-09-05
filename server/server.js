@@ -7,8 +7,8 @@ const app = express();
 
 // Routes
 
-app.use("/signup", require("./routes/auth.js"));
-app.use("/grid/:fitbitId", require("./routes/auth.js"));
+app.use("http://api.fitbit.com/oauth", require("./routes/auth.js"));
+app.use("/grid/", require("./routes/user.js"));
 
 // Express Session
 
