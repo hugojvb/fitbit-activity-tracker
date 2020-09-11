@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 import "../style/grid.css";
 
+const queryString = require("query-string");
+
 class Grid extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       loading: false,
     };
+    this.parsed = queryString.parse(props.location.hash);
+    console.log(this.parsed);
   }
 
   render() {
