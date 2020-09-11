@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "btoa-atob": "^0.1.2",
+    "buffer": "^5.6.0",
     "config": "^3.3.1",
     "express": "^4.17.1",
     "passport": "^0.4.1",

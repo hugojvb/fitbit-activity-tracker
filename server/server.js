@@ -7,7 +7,7 @@ const app = express();
 
 // Routes
 
-app.use("http://api.fitbit.com/oauth", require("./routes/auth.js"));
+app.use("http://api.fitbit.com/oauth/token", require("./routes/auth.js"));
 app.use("/grid/", require("./routes/user.js"));
 
 // Express Session

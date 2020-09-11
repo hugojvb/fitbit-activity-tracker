@@ -3,19 +3,13 @@ const express = require("express");
 const router = express.Router();
 
 // I need to get the authcode, make it into base hexadecimal,
-// then pass it into /signin where it will have headers meant to fetch
+// then pass it into /signin where it will have headers to fetch
 
-const toEncode = "22BRPY:0b66014118b0c6c3e1edc679ebecd2d0";
-
-router.get(
-  "/:code",
-  (req, res) => {
-    const authcode = req.params.code;
-
-    req.headers.token = `Basic ${window.btoa(toEncode)}`;
-    res.redirect("/:token");
-  }
-  // scope: ["activity", "heartrate", "location", "profile"]
-);
+router.get("/:access_token", (req, res) => {
+  const authcode = req.params.access_token;
+  console.log(req.params);
+  res.send("wait");
+  // res.redirect("http://api.fitbit.com/oauth/token");
+});
 
 module.exports = router;
