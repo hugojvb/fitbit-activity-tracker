@@ -1,4 +1,5 @@
 * {
+  top: 0;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -6,8 +7,24 @@
 }
 
 body {
+  height: 100%;
   color: white;
   background-color: #333;
   font-size: 20px;
   font-weight: 600;
+}
+
+.loading-container {
+  position: absolute;
+  background-size: cover;
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+}
+
+.loading {
+  display: block;
+  margin: 38vh auto;
+  height: 150px;
+  background-color: white;
 }

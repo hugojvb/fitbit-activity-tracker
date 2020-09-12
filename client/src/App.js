@@ -9,10 +9,22 @@ import {
 } from "react-router-dom";
 import Signup from "./components/Signup";
 import Navbar from "./components/Navbar";
+import Spinner from "./components/Spinner";
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      loading: true,
+    };
+  }
+
+  componentDidMount() {
+    this.setState({ loading: false });
+  }
+
   render() {
-    return (
+    return this.state.loading === false ? (
       <Router>
         <Fragment>
           <Navbar />
@@ -25,6 +37,8 @@ class App extends Component {
           </Switch>
         </Fragment>
       </Router>
+    ) : (
+      <Spinner />
     );
   }
 }
