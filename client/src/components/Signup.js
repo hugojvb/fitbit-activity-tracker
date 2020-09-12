@@ -3,7 +3,7 @@ import "../style/signup.css";
 
 class Login extends Component {
   constructor(props) {
-    super(props);
+    super();
     this.state = {
       email: "",
       password: "",

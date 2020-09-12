@@ -1,14 +1,10 @@
 import React from "react";
-import "../assets/logo.png";
+import logo from "../assets/logo.png";
 
 function Spinner() {
   return (
     <div className="loading-container">
-      <img
-        className="loading"
-        src={require("../assets/logo.png")}
-        alt="loading"
-      />
+      <img className="loading" src={logo} alt="loading" />
     </div>
   );
 }

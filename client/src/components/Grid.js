@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../style/grid.css";
 import * as queryString from "query-string";
+import Spinner from "./Spinner";
 
 class Grid extends Component {
   constructor(props) {
@@ -9,11 +10,21 @@ class Grid extends Component {
       loading: true,
     };
     this.parsed = queryString.parse(props.location.hash);
-    console.log(this.parsed);
+    // console.log(this.parsed);
+  }
+
+  async componentDidMount() {
+    const data = await fetch("https://api.fitbit.com/1/user/-/profile.json", {
+      headers: {
+        Authorization: `${this.parsed.token_type} ${this.parsed.access_token}`,
+      },
+    });
+    console.log(data);
+    this.setState({ loading: false });
   }
 
   render() {
-    return (
+    return this.state.loading === false ? (
       <div className="grid-container">
         <div className="bg1">
           <h2>2/5</h2>
@@ -64,6 +75,8 @@ class Grid extends Component {
           <p>Sleep</p>
         </div>
       </div>
+    ) : (
+      <Spinner />
     );
   }
 }

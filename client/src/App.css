@@ -17,7 +17,7 @@ body {
 .loading-container {
   position: absolute;
   background-size: cover;
-  background-color: white;
+  background-color: #111;
   width: 100vw;
   height: 100vh;
 }
@@ -26,5 +26,5 @@ body {
   display: block;
   margin: 38vh auto;
   height: 150px;
-  background-color: white;
+  background-color: #111;
 }

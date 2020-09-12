@@ -5,6 +5,10 @@
   grid-gap: 5px;
 }
 
+p {
+  margin-top: 5px;
+}
+
 .bg1 {
   background-image: url(../assets/bg1.jpg);
   background-size: cover;
@@ -48,8 +52,4 @@
 
 .grid-container > div:nth-of-type(12) {
   grid-column: 3/5;
-}
-
-p {
-  margin-top: 5px;
 }

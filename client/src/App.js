@@ -1,12 +1,13 @@
 import React, { Fragment, Component } from "react";
 import "./App.css";
-import Grid from "./components/Grid";
+
 import {
   BrowserRouter as Router,
   Route,
   Switch,
   Redirect,
 } from "react-router-dom";
+import Grid from "./components/Grid";
 import Signup from "./components/Signup";
 import Navbar from "./components/Navbar";
 import Spinner from "./components/Spinner";
@@ -32,7 +33,11 @@ class App extends Component {
             <Route exact path="/">
               <Redirect to="/signup" />
             </Route>
-            <Route exact path="/signup" component={Signup} />
+            <Route
+              exact
+              path="/signup"
+              render={(props) => <Signup loading={this.state.loading} />}
+            />
             <Route exact path="/grid" component={Grid} />
           </Switch>
         </Fragment>
