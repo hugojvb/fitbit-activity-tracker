@@ -4,12 +4,12 @@
   align-items: center;
   position: absolute;
   background-size: cover;
-  background-color: #fff;
+  background-color: #222;
   width: 100vw;
   height: 100vh;
 }
 
 .loading {
   height: 115px;
-  background-color: #fff;
+  background-color: #222;
 }

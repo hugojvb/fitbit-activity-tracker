@@ -15,14 +15,15 @@ class Grid extends Component {
   }
 
   async componentDidMount() {
-    const data = await fetch(
-      `https://api.fitbit.com/1/user/-/activities/date/${this.state.date}.json`,
+    const res = await fetch(
+      `https://api.fitbit.com/1/user/${this.parsed.user_id}/activities/date/${this.state.date}.json`,
       {
         headers: {
           Authorization: `${this.parsed.token_type} ${this.parsed.access_token}`,
         },
       }
     );
+    const data = res.json();
     console.log(data);
     this.setState({ loading: false });
   }

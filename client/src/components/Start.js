@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../style/signup.css";
 
-class Signup extends Component {
+class Start extends Component {
   constructor(props) {
     super();
   }
@@ -29,4 +29,4 @@ class Signup extends Component {
   }
 }
 
-export default Signup;
+export default Start;

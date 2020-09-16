@@ -8,7 +8,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import Grid from "./components/Grid";
-import Signup from "./components/Signup";
+import Start from "./components/Start";
 import Navbar from "./components/Navbar";
 
 class App extends Component {
@@ -19,9 +19,9 @@ class App extends Component {
           <Navbar />
           <Switch>
             <Route exact path="/">
-              <Redirect to="/signup" />
+              <Redirect to="/start" />
             </Route>
-            <Route exact path="/signup" render={(props) => <Signup />} />
+            <Route exact path="/start" component={Start} />
             <Route exact path="/grid" component={Grid} />
           </Switch>
         </Fragment>
