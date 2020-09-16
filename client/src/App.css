@@ -13,19 +13,3 @@ body {
   font-size: 20px;
   font-weight: 600;
 }
-
-.loading-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  background-size: cover;
-  background-color: #fff;
-  width: 100vw;
-  height: 100vh;
-}
-
-.loading {
-  height: 115px;
-  background-color: #fff;
-}

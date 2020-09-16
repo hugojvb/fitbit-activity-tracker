@@ -1,5 +1,6 @@
 #navbar {
   display: flex;
+  align-items: center;
   padding: 20px;
   background: linear-gradient(45deg, #222, #111);
   height: 60px;
@@ -14,6 +15,8 @@
 
 #navbar > .signout {
   margin-left: auto;
+  color: #fff;
+  font-size: 18px;
 }
 
 #navbar > .signout:hover {
