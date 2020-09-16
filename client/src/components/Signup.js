@@ -1,16 +1,10 @@
 import React, { Component } from "react";
 import "../style/signup.css";
 
-class Login extends Component {
+class Signup extends Component {
   constructor(props) {
     super();
-    this.state = {
-      email: "",
-      password: "",
-    };
   }
-
-  onChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
   render() {
     return (
@@ -35,4 +29,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default Signup;

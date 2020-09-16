@@ -10,22 +10,10 @@ import {
 import Grid from "./components/Grid";
 import Signup from "./components/Signup";
 import Navbar from "./components/Navbar";
-import Spinner from "./components/Spinner";
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      loading: true,
-    };
-  }
-
-  componentDidMount() {
-    this.setState({ loading: false });
-  }
-
   render() {
-    return this.state.loading === false ? (
+    return (
       <Router>
         <Fragment>
           <Navbar />
@@ -33,17 +21,11 @@ class App extends Component {
             <Route exact path="/">
               <Redirect to="/signup" />
             </Route>
-            <Route
-              exact
-              path="/signup"
-              render={(props) => <Signup loading={this.state.loading} />}
-            />
+            <Route exact path="/signup" render={(props) => <Signup />} />
             <Route exact path="/grid" component={Grid} />
           </Switch>
         </Fragment>
       </Router>
-    ) : (
-      <Spinner />
     );
   }
 }

@@ -8,20 +8,36 @@ class Grid extends Component {
     super();
     this.state = {
       loading: true,
+      date: this.formatDate(new Date()),
     };
     this.parsed = queryString.parse(props.location.hash);
-    // console.log(this.parsed);
+    console.log(this.parsed);
   }
 
   async componentDidMount() {
-    const data = await fetch("https://api.fitbit.com/1/user/-/profile.json", {
-      headers: {
-        Authorization: `${this.parsed.token_type} ${this.parsed.access_token}`,
-      },
-    });
+    const data = await fetch(
+      `https://api.fitbit.com/1/user/-/activities/date/${this.state.date}.json`,
+      {
+        headers: {
+          Authorization: `${this.parsed.token_type} ${this.parsed.access_token}`,
+        },
+      }
+    );
     console.log(data);
     this.setState({ loading: false });
   }
+
+  formatDate = (date) => {
+    var d = new Date(date),
+      month = "" + (d.getMonth() + 1),
+      day = "" + d.getDate(),
+      year = d.getFullYear();
+
+    if (month.length < 2) month = "0" + month;
+    if (day.length < 2) day = "0" + day;
+
+    return [year, month, day].join("-");
+  };
 
   render() {
     return this.state.loading === false ? (

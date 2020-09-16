@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "../assets/logo.png";
+import "../style/spinner.css";
 
 function Spinner() {
   return (

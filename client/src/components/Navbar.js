@@ -6,7 +6,9 @@ const Navbar = () => {
     <nav id="navbar">
       <img id="logo" src={require("../assets/logo.png")} alt="fitbit logo" />
       <h4 id="title">Fitbit Activity Tracker</h4>
-      <h5 className="signout">Sign Out</h5>
+      <a href="http://localhost:3000/" className="signout">
+        Sign Out
+      </a>
     </nav>
   );
 };
