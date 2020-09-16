@@ -13,7 +13,7 @@ const Navbar = (props) => {
 
       {parsed && (
         <a href="http://localhost:3000/" className="signout">
-          <h4>Sign Out</h4>
+          <h4>Log Out</h4>
         </a>
       )}
     </nav>
