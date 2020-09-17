@@ -1,32 +1,51 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../style/grid.css";
 import * as queryString from "query-string";
 import Spinner from "./Spinner";
 import Context from "../context/context";
 
-const Grid = (props) => {
-  const [loading, setLoading] = useState({ loading: false });
-  const context = useContext(Context);
+// Turning the date to YYYY-MM-DD (required to Fetch)
+const formatDate = (date) => {
+  let d = new Date(date),
+    month = "" + (d.getMonth() + 1),
+    day = "" + d.getDate(),
+    year = d.getFullYear();
 
-  async function getData() {
-    const parsed = queryString.parse(props.location.hash);
-    console.log(parsed);
-    const res = await fetch(
-      `https://api.fitbit.com/1/user/${parsed.user_id}/activities/date/${context.date}.json`,
-      {
-        headers: {
-          Authorization: `${parsed.token_type} ${parsed.access_token}`,
-        },
-      }
-    );
-    const data = await res.json();
-    setLoading();
-    console.log(data);
-  }
+  if (month.length < 2) month = "0" + month;
+  if (day.length < 2) day = "0" + day;
+
+  return [year, month, day].join("-");
+};
+
+const Grid = (props) => {
+  const context = useContext(Context);
+  const [loading, setLoading] = useState(true);
+  const date = formatDate(new Date());
 
   useEffect(() => {
+    const getData = async () => {
+      try {
+        const parsed = queryString.parse(props.location.hash);
+        const { user_id, token_type, access_token } = parsed;
+        const res = await fetch(
+          `https://api.fitbit.com/1/user/${user_id}/activities/date/${date}.json`,
+          {
+            headers: {
+              Authorization: `${token_type} ${access_token}`,
+            },
+          }
+        );
+        const data = await res.json();
+        console.log(data);
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setLoading(false);
+      }
+    };
     getData();
-  });
+    context.login();
+  }, [date, props.location.hash, context]);
 
   return loading === false ? (
     <div className="grid-container">
