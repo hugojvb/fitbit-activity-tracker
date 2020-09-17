@@ -1,17 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../style/navbar.css";
-import * as queryString from "query-string";
+import logo from "../assets/logo.png";
+import Context from "../context/context";
 
 const Navbar = (props) => {
-  const parsed = queryString.parse(props.location);
-  console.log(parsed);
+  const context = useContext(Context);
 
   return (
     <nav id="navbar">
-      <img id="logo" src={require("../assets/logo.png")} alt="fitbit logo" />
+      <img id="logo" src={logo} alt="fitbit logo" />
       <h4 id="title">Fitbit Activity Tracker</h4>
-
-      {parsed && (
+      {context.logged_in && (
         <a href="http://localhost:3000/" className="signout">
           <h4>Log Out</h4>
         </a>
