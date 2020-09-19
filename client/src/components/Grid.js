@@ -16,7 +16,6 @@ const Grid = (props) => {
       try {
         const parsed = queryString.parse(props.location.hash);
         const { user_id, token_type, access_token } = parsed;
-
         const res = await fetch(
           `https://api.fitbit.com/1/user/${user_id}/activities/date/${date}.json`,
           {
@@ -25,7 +24,6 @@ const Grid = (props) => {
             },
           }
         );
-
         if (shouldFetch) getActivity(await res.json());
       } catch (err) {
         console.log(err);
@@ -35,7 +33,6 @@ const Grid = (props) => {
     };
     getActivityData();
     login();
-    getActivity();
     return () => {
       shouldFetch = false;
     };

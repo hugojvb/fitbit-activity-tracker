@@ -1,7 +1,0 @@
-{
-  "FITBIT_CLIENT_ID": "22BRPY",
-  "FITBIT_CLIENT_SECRET": "0b66014118b0c6c3e1edc679ebecd2d0",
-  "CALLBACK_URL": "http://localhost",
-  "AUTHORIZATION_URI": "https://www.fitbit.com/oauth2/authorize",
-  "TOKEN_REQUEST_URI": "https://api.fitbit.com/oauth2/token"
-}
