@@ -3,25 +3,12 @@ import "../style/grid.css";
 import * as queryString from "query-string";
 import Spinner from "./Spinner";
 import Context from "../context/context";
-
-// Turning the date to YYYY-MM-DD (required to Fetch)
-const formatDate = (date) => {
-  let d = new Date(date),
-    month = "" + (d.getMonth() + 1),
-    day = "" + d.getDate(),
-    year = d.getFullYear();
-
-  if (month.length < 2) month = "0" + month;
-  if (day.length < 2) day = "0" + day;
-
-  return [year, month, day].join("-");
-};
+import { date } from "../util/date";
 
 const Grid = (props) => {
   const context = useContext(Context);
   const { login, getActivity, activity } = context;
   const [loading, setLoading] = useState(true);
-  const date = formatDate(new Date());
 
   useEffect(() => {
     let shouldFetch = true;
