@@ -1,31 +1,51 @@
 #navbar {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 20px;
   background: linear-gradient(45deg, #222, #111);
   height: 60px;
-  color: white;
   border-bottom: 1px double lightseagreen;
 }
 
-#navbar > h4 {
+#navbar ul {
+  display: flex;
+  align-items: center;
+}
+
+#title {
   margin-left: 10px;
+  margin-right: auto;
   text-decoration: none;
 }
 
-#navbar > .signout {
+.signout {
   margin-left: auto;
   color: #fff;
-  font-size: 18px;
 }
 
-#navbar > .signout:hover {
+.signout:hover {
   color: lightseagreen;
   transform: scale(0.99);
   cursor: pointer;
 }
 
-#navbar > #logo {
+#logo {
   height: 30px;
   cursor: pointer;
+}
+
+li {
+  list-style: none;
+}
+
+.active {
+  margin-left: auto;
+  margin-right: 2em;
+}
+
+@media (max-width: 700px) {
+  .active {
+    display: none;
+  }
 }
