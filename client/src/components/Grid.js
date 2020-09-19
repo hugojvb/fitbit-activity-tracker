@@ -19,13 +19,13 @@ const formatDate = (date) => {
 
 const Grid = (props) => {
   const context = useContext(Context);
+  const { login, getActivity, activity } = context;
   const [loading, setLoading] = useState(true);
-  const [activity, setActivity] = useState({});
   const date = formatDate(new Date());
 
   useEffect(() => {
     let shouldFetch = true;
-    const getData = async () => {
+    const getActivityData = async () => {
       try {
         const parsed = queryString.parse(props.location.hash);
         const { user_id, token_type, access_token } = parsed;
@@ -39,21 +39,22 @@ const Grid = (props) => {
           }
         );
 
-        if (shouldFetch) setActivity(await res.json());
+        if (shouldFetch) getActivity(await res.json());
       } catch (err) {
         console.log(err);
       } finally {
         setLoading(false);
       }
     };
-    getData();
-    context.login();
+    getActivityData();
+    login();
+    getActivity();
     return () => {
       shouldFetch = false;
     };
   }, []);
 
-  console.log(activity.summary);
+  console.log(activity);
 
   return loading === false ? (
     <div className="grid-container">
