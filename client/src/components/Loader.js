@@ -1,8 +1,8 @@
 import React from "react";
 import logo from "../assets/logo.png";
-import "../style/spinner.css";
+import "../style/loader.css";
 
-const Spinner = () => {
+const Loader = () => {
   return (
     <div className="loading-container">
       <img className="loading" src={logo} alt="loading" />
@@ -10,4 +10,4 @@ const Spinner = () => {
   );
 };
 
-export default Spinner;
+export default Loader;

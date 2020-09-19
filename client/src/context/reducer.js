@@ -1,4 +1,4 @@
-import { GET_ACTIVITY, LOGIN, LOGOUT } from "./types";
+import { GET_ACTIVITY, LOGIN, LOGOUT, STOP_LOADING } from "./types";
 
 export default (state, action) => {
   switch (action.type) {
@@ -16,6 +16,11 @@ export default (state, action) => {
       return {
         ...state,
         activity: action.payload,
+      };
+    case STOP_LOADING:
+      return {
+        ...state,
+        loading: false,
       };
     default:
       return state;

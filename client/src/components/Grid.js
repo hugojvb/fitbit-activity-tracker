@@ -1,14 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import "../style/grid.css";
 import * as queryString from "query-string";
-import Spinner from "./Spinner";
+import Loader from "./Loader";
 import Context from "../context/context";
 import { date } from "../util/date";
 
 const Grid = (props) => {
   const context = useContext(Context);
-  const { login, getActivity, activity } = context;
-  const [loading, setLoading] = useState(true);
+  const { login, loading, activity, stopLoading, getActivity } = context;
 
   useEffect(() => {
     let shouldFetch = true;
@@ -16,7 +15,8 @@ const Grid = (props) => {
       try {
         const parsed = queryString.parse(props.location.hash);
         const { user_id, token_type, access_token } = parsed;
-        const res = await fetch(
+
+        const resActivity = await fetch(
           `https://api.fitbit.com/1/user/${user_id}/activities/date/${date}.json`,
           {
             headers: {
@@ -24,11 +24,14 @@ const Grid = (props) => {
             },
           }
         );
-        if (shouldFetch) getActivity(await res.json());
+
+        if (shouldFetch) {
+          getActivity(await resActivity.json());
+        }
       } catch (err) {
-        console.log(err);
+        console.log("Something went wrong. Error is as follows " + err);
       } finally {
-        setLoading(false);
+        stopLoading();
       }
     };
     getActivityData();
@@ -92,7 +95,7 @@ const Grid = (props) => {
       </div>
     </div>
   ) : (
-    <Spinner />
+    <Loader />
   );
 };
 
