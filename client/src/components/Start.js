@@ -1,5 +1,5 @@
 import React from "react";
-import "../style/signup.css";
+import "../style/start.css";
 
 const Start = (props) => {
   return (

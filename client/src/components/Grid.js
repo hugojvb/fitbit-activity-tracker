@@ -1,9 +1,10 @@
 import React, { useContext, useEffect } from "react";
 import "../style/grid.css";
-import * as queryString from "query-string";
 import Loader from "./Loader";
 import Context from "../context/context";
 import { date } from "../util/date";
+import axios from "axios";
+import * as queryString from "query-string";
 
 const Grid = (props) => {
   const context = useContext(Context);
@@ -16,7 +17,7 @@ const Grid = (props) => {
         const parsed = queryString.parse(props.location.hash);
         const { user_id, token_type, access_token } = parsed;
 
-        const resActivity = await fetch(
+        const resActivity = await axios(
           `https://api.fitbit.com/1/user/${user_id}/activities/date/${date}.json`,
           {
             headers: {
@@ -26,7 +27,7 @@ const Grid = (props) => {
         );
 
         if (shouldFetch) {
-          getActivity(await resActivity.json());
+          getActivity(await resActivity.data);
         }
       } catch (err) {
         console.log("Something went wrong. Error is as follows " + err);
