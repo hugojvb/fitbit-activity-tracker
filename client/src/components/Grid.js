@@ -8,16 +8,26 @@ import * as queryString from "query-string";
 
 const Grid = (props) => {
   const context = useContext(Context);
-  const { login, loading, activity, stopLoading, getActivity } = context;
+  const {
+    login,
+    loading,
+    stopLoading,
+    activity,
+    bodyFat,
+    bodyWeight,
+    getActivityState,
+    getBodyFatState,
+    getBodyWeightState,
+  } = context;
+  const parsed = queryString.parse(props.location.hash);
+  console.log(parsed);
+  const { user_id, token_type, access_token, scope } = parsed;
 
   useEffect(() => {
     let shouldFetch = true;
-    const getActivityData = async () => {
+    const getData = async () => {
       try {
-        const parsed = queryString.parse(props.location.hash);
-        const { user_id, token_type, access_token } = parsed;
-
-        const resActivity = await axios(
+        const resActivity = await axios.get(
           `https://api.fitbit.com/1/user/${user_id}/activities/date/${date}.json`,
           {
             headers: {
@@ -26,16 +36,36 @@ const Grid = (props) => {
           }
         );
 
+        const resBodyFat = await axios.get(
+          `https://api.fitbit.com/1/user/${user_id}/body/log/fat/date/${date}/1m.json`,
+          {
+            headers: {
+              Authorization: `${token_type} ${access_token}`,
+            },
+          }
+        );
+
+        const resBodyWeight = await axios.get(
+          `https://api.fitbit.com/1/user/${user_id}/body/log/weight/date/${date}/1m.json`,
+          {
+            headers: {
+              Authorization: `${token_type} ${access_token}`,
+            },
+          }
+        );
+
         if (shouldFetch) {
-          getActivity(await resActivity.data);
+          getActivityState(await resActivity.data);
+          getBodyFatState(await resBodyFat.data);
+          getBodyWeightState(await resBodyWeight.data);
         }
       } catch (err) {
-        console.log("Something went wrong. Error is as follows " + err);
+        console.log("Something went wrong. Error: " + err);
       } finally {
         stopLoading();
       }
     };
-    getActivityData();
+    getData();
     login();
     return () => {
       shouldFetch = false;
@@ -47,39 +77,54 @@ const Grid = (props) => {
   return loading === false ? (
     <div className="grid-container">
       <div className="bg1">
-        <h2>{Object.keys(activity.goals).length}</h2>
+        <h2>
+          {scope.includes("activity") && Object.keys(activity.goals).length}
+        </h2>
         <p>Goals</p>
       </div>
       <div className="bg1">
-        <h2>{activity.summary.caloriesOut}</h2>
+        <h2>{scope.includes("activity") && activity.summary.caloriesOut}</h2>
         <p>Calories Out</p>
       </div>
       <div className="bg2">
-        <h2>{activity.summary.caloriesBMR}</h2>
+        <h2>{scope.includes("activity") && activity.summary.caloriesBMR}</h2>
         <p>Base Metabolic Rate</p>
       </div>
       <div className="bg1">
         <i className="fas fa-shoe-prints fa-2x" />
-        <p>{activity.summary.steps} Steps</p>
+        <p>{scope.includes("activity") && activity.summary.steps} Steps</p>
       </div>
       <div className="bg1">
         <i className="fas fa-mountain fa-2x" />
-        <p>Elevation: {activity.summary.elevation}</p>
+        <p>
+          Elevation: {scope.includes("activity") && activity.summary.elevation}
+        </p>
       </div>
       <div className="bg2">
         <i className="fas fa-running fa-2x" />
-        <h4>Total Distance: {activity.summary.distances[1]["distance"]} Km</h4>
+        <h4>
+          Total Distance:{" "}
+          {scope.includes("activity") &&
+            activity.summary.distances[1]["distance"]}{" "}
+          Km
+        </h4>
       </div>
       <div className="bg1">
         <i className="fas fa-utensils fa-2x" />
         <p>Calorie Intake</p>
       </div>
       <div className="bg2">
-        <h2>75</h2>
+        <h2>
+          {scope.includes("weight") &&
+            bodyWeight.weight[bodyWeight.weight.length - 1]["weight"]}
+        </h2>
         <p>(Kg)</p>
       </div>
       <div className="bg2">
-        <h2>25</h2>
+        <h2>
+          {scope.includes("weight") &&
+            bodyFat.fat[bodyFat.fat.length - 1]["fat"]}
+        </h2>
         <p>(Body Fat %)</p>
       </div>
       <div className="bg1">
