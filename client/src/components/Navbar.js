@@ -5,7 +5,7 @@ import Context from "../context/context";
 
 const Navbar = (props) => {
   const context = useContext(Context);
-  console.log(context.activity.summary);
+  const { activity, logged_in } = context;
 
   return (
     <nav id="navbar">
@@ -13,14 +13,15 @@ const Navbar = (props) => {
       <h4 id="title">Fitbit Activity Tracker</h4>
       <ul>
         <li>
-          {context.activity.summary && (
+          {activity.summary && (
             <h6 className="active">
-              Activity Score: {context.activity.summary.activeScore}
+              Minutes you've been active today:{" "}
+              {activity.summary.lightlyActiveMinutes}
             </h6>
           )}
         </li>
         <li>
-          {context.logged_in && (
+          {logged_in && (
             <a href="http://localhost:3000/" className="signout">
               <h4>Log Out</h4>
             </a>

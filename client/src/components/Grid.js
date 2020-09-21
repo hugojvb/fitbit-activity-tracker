@@ -15,12 +15,17 @@ const Grid = (props) => {
     activity,
     bodyFat,
     bodyWeight,
+    sleep,
+    heartRate,
+    food,
     getActivityState,
     getBodyFatState,
     getBodyWeightState,
+    getSleepState,
+    getHeartRateState,
+    getFoodState,
   } = context;
   const parsed = queryString.parse(props.location.hash);
-  console.log(parsed);
   const { user_id, token_type, access_token, scope } = parsed;
 
   useEffect(() => {
@@ -54,10 +59,40 @@ const Grid = (props) => {
           }
         );
 
+        const resSleep = await axios.get(
+          `https://api.fitbit.com/1.2/user/${user_id}/sleep/date/${date}.json`,
+          {
+            headers: {
+              Authorization: `${token_type} ${access_token}`,
+            },
+          }
+        );
+
+        const resHeartRate = await axios.get(
+          `https://api.fitbit.com/1/user/${user_id}/activities/heart/date/${date}/1w.json`,
+          {
+            headers: {
+              Authorization: `${token_type} ${access_token}`,
+            },
+          }
+        );
+
+        const resFood = await axios.get(
+          `https://api.fitbit.com/1/user/${user_id}/foods/log/date/${date}.json`,
+          {
+            headers: {
+              Authorization: `${token_type} ${access_token}`,
+            },
+          }
+        );
+
         if (shouldFetch) {
           getActivityState(await resActivity.data);
           getBodyFatState(await resBodyFat.data);
           getBodyWeightState(await resBodyWeight.data);
+          getSleepState(await resSleep.data);
+          getHeartRateState(await resHeartRate.data);
+          getFoodState(await resFood.data);
         }
       } catch (err) {
         console.log("Something went wrong. Error: " + err);
@@ -72,7 +107,7 @@ const Grid = (props) => {
     };
   }, []);
 
-  console.log(activity);
+  console.log(heartRate);
 
   return loading === false ? (
     <div className="grid-container">
@@ -115,7 +150,10 @@ const Grid = (props) => {
       </div>
       <div className="bg1">
         <i className="fas fa-utensils fa-2x" />
-        <p>Calorie Intake</p>
+        <p>
+          Calorie Intake: {scope.includes("nutrition") && food.summary.calories}{" "}
+          Kcal
+        </p>
       </div>
       <div className="bg2">
         <h2>
@@ -141,7 +179,10 @@ const Grid = (props) => {
       </div>
       <div className="bg2">
         <i className="fas fa-bed fa-2x" />
-        <p>Sleep</p>
+        <p>
+          {scope.includes("sleep") && sleep.summary.totalMinutesAsleep} Minutes
+          of sleep
+        </p>
       </div>
     </div>
   ) : (

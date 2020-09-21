@@ -5,6 +5,9 @@ import {
   GET_ACTIVITY,
   GET_BODYFAT,
   GET_BODYWEIGHT,
+  GET_SLEEP,
+  GET_HEARTRATE,
+  GET_FOOD,
 } from "./types";
 
 export default (state, action) => {
@@ -38,6 +41,21 @@ export default (state, action) => {
       return {
         ...state,
         bodyWeight: action.payload,
+      };
+    case GET_SLEEP:
+      return {
+        ...state,
+        sleep: action.payload,
+      };
+    case GET_HEARTRATE:
+      return {
+        ...state,
+        heartRate: action.payload,
+      };
+    case GET_FOOD:
+      return {
+        ...state,
+        food: action.payload,
       };
     default:
       return state;
