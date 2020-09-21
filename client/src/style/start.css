@@ -59,6 +59,6 @@ a {
 
 @media (max-width: 600px) {
   body {
-    font-size: smaller;
+    font-size: 1em;
   }
 }

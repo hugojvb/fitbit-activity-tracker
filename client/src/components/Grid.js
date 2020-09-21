@@ -92,20 +92,24 @@ const Grid = (props) => {
       </div>
       <div className="bg1">
         <i className="fas fa-shoe-prints fa-2x" />
-        <p>{scope.includes("activity") && activity.summary.steps} Steps</p>
+        <p>Steps: {scope.includes("activity") && activity.summary.steps}</p>
       </div>
       <div className="bg1">
-        <i className="fas fa-mountain fa-2x" />
+        <i className="fas fa-child fa-2x" />
         <p>
-          Elevation: {scope.includes("activity") && activity.summary.elevation}
+          BMI:{" "}
+          {scope.includes("weight") &&
+            bodyWeight.weight[bodyWeight.weight.length - 1]["bmi"]}
         </p>
       </div>
       <div className="bg2">
         <i className="fas fa-running fa-2x" />
         <h4>
-          Total Distance:{" "}
+          Total Distance Today:{" "}
           {scope.includes("activity") &&
-            activity.summary.distances[1]["distance"]}{" "}
+            activity.summary.distances.find((c) => c.activity === "total")[
+              "distance"
+            ]}{" "}
           Km
         </h4>
       </div>
