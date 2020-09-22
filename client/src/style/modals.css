@@ -1,17 +1,32 @@
 .modal_container {
-  border: 1px solid #111;
+  border: 1px solid aqua;
   display: flex;
   flex-direction: column;
   align-items: center;
   background: linear-gradient(45deg, #333, #222);
   border-radius: 5px;
   padding: 25px;
-  width: 40vw;
-  height: 40vh;
+  width: 60vw;
+  height: 60vh;
   color: rgba(0, 255, 255, 0.5);
+  opacity: 0.7;
 }
 
 .close_button {
   background-color: #444;
   border-radius: 5px;
+  border: 0.5px solid aqua;
+}
+
+.close_button:focus {
+  visibility: hidden;
+}
+
+.modal_table {
+  margin-top: 10vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 5vw;
+  text-align: start;
+  line-height: 2em;
 }
