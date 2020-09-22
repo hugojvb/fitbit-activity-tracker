@@ -123,6 +123,78 @@ const State = (props) => {
     dispatch({ type: CLOSE_CALORIESBMR_MODAL });
   };
 
+  const openStepsModal = () => {
+    dispatch({ type: OPEN_STEPS_MODAL });
+  };
+
+  const closeStepsModal = () => {
+    dispatch({ type: CLOSE_STEPS_MODAL });
+  };
+
+  const openBMIModal = () => {
+    dispatch({ type: OPEN_BMI_MODAL });
+  };
+
+  const closeBMIModal = () => {
+    dispatch({ type: CLOSE_BMI_MODAL });
+  };
+
+  const openDistanceModal = () => {
+    dispatch({ type: OPEN_DISTANCE_MODAL });
+  };
+
+  const closeDistanceModal = () => {
+    dispatch({ type: CLOSE_DISTANCE_MODAL });
+  };
+
+  const openCalorieIntakeModal = () => {
+    dispatch({ type: OPEN_CALORIEINTAKE_MODAL });
+  };
+
+  const closeCalorieIntakeModal = () => {
+    dispatch({ type: CLOSE_CALORIEINTAKE_MODAL });
+  };
+
+  const openWeightModal = () => {
+    dispatch({ type: OPEN_WEIGHT_MODAL });
+  };
+
+  const closeWeightModal = () => {
+    dispatch({ type: CLOSE_WEIGHT_MODAL });
+  };
+
+  const openBodyFatModal = () => {
+    dispatch({ type: OPEN_BODYFAT_MODAL });
+  };
+
+  const closeBodyFatModal = () => {
+    dispatch({ type: CLOSE_BODYFAT_MODAL });
+  };
+
+  const openActivityModal = () => {
+    dispatch({ type: OPEN_ACTIVITY_MODAL });
+  };
+
+  const closeActivityModal = () => {
+    dispatch({ type: CLOSE_ACTIVITY_MODAL });
+  };
+
+  const openHeartRateModal = () => {
+    dispatch({ type: OPEN_HEARTRATE_MODAL });
+  };
+
+  const closeHeartRateModal = () => {
+    dispatch({ type: CLOSE_HEARTRATE_MODAL });
+  };
+
+  const openSleepModal = () => {
+    dispatch({ type: OPEN_SLEEP_MODAL });
+  };
+
+  const closeSleepModal = () => {
+    dispatch({ type: CLOSE_SLEEP_MODAL });
+  };
+
   return (
     <Context.Provider
       value={{
@@ -157,6 +229,28 @@ const State = (props) => {
         getFoodState,
         openGoalsModal,
         closeGoalsModal,
+        openCaloriesOutModal,
+        closeCaloriesOutModal,
+        openCaloriesBMRModal,
+        closeCaloriesBMRModal,
+        openStepsModal,
+        closeStepsModal,
+        openBMIModal,
+        closeBMIModal,
+        openDistanceModal,
+        closeDistanceModal,
+        openCalorieIntakeModal,
+        closeCalorieIntakeModal,
+        openWeightModal,
+        closeWeightModal,
+        openBodyFatModal,
+        closeBodyFatModal,
+        openActivityModal,
+        closeActivityModal,
+        openHeartRateModal,
+        closeHeartRateModal,
+        openSleepModal,
+        closeSleepModal,
       }}
     >
       {props.children}
