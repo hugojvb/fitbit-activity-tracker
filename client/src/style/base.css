@@ -1,0 +1,24 @@
+body {
+  background-image: url(../assets/loginbg.jpg);
+  background-blend-mode: exclusion;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+@media (max-width: 600px) {
+  body {
+    font-size: 1em;
+  }
+}
+
+@media (max-height: 650px) {
+  body {
+    font-size: 1em;
+  }
+}
+
+@media (max-height: 400px) {
+  body {
+    font-size: smaller;
+  }
+}

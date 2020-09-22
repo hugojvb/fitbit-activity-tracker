@@ -10,6 +10,7 @@ import Grid from "./components/Grid";
 import Start from "./components/Start";
 import Navbar from "./components/Navbar";
 import State from "./context/state";
+import "./style/base.css";
 
 const App = () => {
   return (

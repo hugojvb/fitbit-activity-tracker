@@ -11,8 +11,30 @@ import {
   GET_SLEEP,
   GET_HEARTRATE,
   GET_FOOD,
-  OPEN_MODAL,
-  CLOSE_MODAL,
+  OPEN_GOALS_MODAL,
+  CLOSE_GOALS_MODAL,
+  OPEN_CALORIESOUT_MODAL,
+  CLOSE_CALORIESOUT_MODAL,
+  OPEN_CALORIESBMR_MODAL,
+  CLOSE_CALORIESBMR_MODAL,
+  OPEN_STEPS_MODAL,
+  CLOSE_STEPS_MODAL,
+  OPEN_BMI_MODAL,
+  CLOSE_BMI_MODAL,
+  OPEN_DISTANCE_MODAL,
+  CLOSE_DISTANCE_MODAL,
+  OPEN_CALORIEINTAKE_MODAL,
+  CLOSE_CALORIEINTAKE_MODAL,
+  OPEN_WEIGHT_MODAL,
+  CLOSE_WEIGHT_MODAL,
+  OPEN_BODYFAT_MODAL,
+  CLOSE_BODYFAT_MODAL,
+  OPEN_ACTIVITY_MODAL,
+  CLOSE_ACTIVITY_MODAL,
+  OPEN_HEARTRATE_MODAL,
+  CLOSE_HEARTRATE_MODAL,
+  OPEN_SLEEP_MODAL,
+  CLOSE_SLEEP_MODAL,
 } from "./types";
 
 const State = (props) => {
@@ -24,7 +46,18 @@ const State = (props) => {
     bodyWeight: {},
     heartRate: {},
     food: {},
-    showModal: false,
+    showGoalsModal: false,
+    showCaloriesOutModal: false,
+    showCaloriesBMRModal: false,
+    showStepsModal: false,
+    showBMIModal: false,
+    showDistanceModal: false,
+    showCalorieIntakeModal: false,
+    showWeightModal: false,
+    showBodyFatModal: false,
+    showActivityModal: false,
+    showHeartRateModal: false,
+    showSleepModal: false,
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -66,12 +99,28 @@ const State = (props) => {
     dispatch({ type: GET_FOOD, payload: food });
   };
 
-  const openModal = () => {
-    dispatch({ type: OPEN_MODAL });
+  const openGoalsModal = () => {
+    dispatch({ type: OPEN_GOALS_MODAL });
   };
 
-  const closeModal = () => {
-    dispatch({ type: CLOSE_MODAL });
+  const closeGoalsModal = () => {
+    dispatch({ type: CLOSE_GOALS_MODAL });
+  };
+
+  const openCaloriesOutModal = () => {
+    dispatch({ type: OPEN_CALORIESOUT_MODAL });
+  };
+
+  const closeCaloriesOutModal = () => {
+    dispatch({ type: CLOSE_CALORIESOUT_MODAL });
+  };
+
+  const openCaloriesBMRModal = () => {
+    dispatch({ type: OPEN_CALORIESBMR_MODAL });
+  };
+
+  const closeCaloriesBMRModal = () => {
+    dispatch({ type: CLOSE_CALORIESBMR_MODAL });
   };
 
   return (
@@ -85,7 +134,18 @@ const State = (props) => {
         sleep: state.sleep,
         heartRate: state.heartRate,
         food: state.food,
-        showModal: state.showModal,
+        showGoalsModal: state.showGoalsModal,
+        showCaloriesOutModal: state.showCaloriesOutModal,
+        showCaloriesBMRModal: state.showCaloriesBMRModal,
+        showStepsModal: state.showStepsModal,
+        showBMIModal: state.showBMIModal,
+        showDistanceModal: state.showDistanceModal,
+        showCalorieIntakeModal: state.showCalorieIntakeModal,
+        showWeightModal: state.showWeightModal,
+        showBodyFatModal: state.showBodyFatModal,
+        showActivityModal: state.showActivityModal,
+        showHeartRateModal: state.showHeartRateModal,
+        showSleepModal: state.showSleepModal,
         login,
         logout,
         stopLoading,
@@ -95,8 +155,8 @@ const State = (props) => {
         getSleepState,
         getHeartRateState,
         getFoodState,
-        openModal,
-        closeModal,
+        openGoalsModal,
+        closeGoalsModal,
       }}
     >
       {props.children}

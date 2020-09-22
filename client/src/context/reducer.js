@@ -8,8 +8,30 @@ import {
   GET_SLEEP,
   GET_HEARTRATE,
   GET_FOOD,
-  OPEN_MODAL,
-  CLOSE_MODAL,
+  OPEN_GOALS_MODAL,
+  CLOSE_GOALS_MODAL,
+  OPEN_CALORIESOUT_MODAL,
+  CLOSE_CALORIESOUT_MODAL,
+  OPEN_CALORIESBMR_MODAL,
+  CLOSE_CALORIESBMR_MODAL,
+  OPEN_STEPS_MODAL,
+  CLOSE_STEPS_MODAL,
+  OPEN_BMI_MODAL,
+  CLOSE_BMI_MODAL,
+  OPEN_DISTANCE_MODAL,
+  CLOSE_DISTANCE_MODAL,
+  OPEN_CALORIEINTAKE_MODAL,
+  CLOSE_CALORIEINTAKE_MODAL,
+  OPEN_WEIGHT_MODAL,
+  CLOSE_WEIGHT_MODAL,
+  OPEN_BODYFAT_MODAL,
+  CLOSE_BODYFAT_MODAL,
+  OPEN_ACTIVITY_MODAL,
+  CLOSE_ACTIVITY_MODAL,
+  OPEN_HEARTRATE_MODAL,
+  CLOSE_HEARTRATE_MODAL,
+  OPEN_SLEEP_MODAL,
+  CLOSE_SLEEP_MODAL,
 } from "./types";
 
 export default (state, action) => {
@@ -59,15 +81,15 @@ export default (state, action) => {
         ...state,
         food: action.payload,
       };
-    case OPEN_MODAL:
+    case OPEN_GOALS_MODAL:
       return {
         ...state,
-        showModal: true,
+        showGoalsModal: true,
       };
-    case CLOSE_MODAL:
+    case CLOSE_GOALS_MODAL:
       return {
         ...state,
-        showModal: false,
+        showGoalsModal: false,
       };
     default:
       return state;

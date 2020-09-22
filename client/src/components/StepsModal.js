@@ -16,7 +16,7 @@ const StepsModal = () => {
         closeOnEsc
         closeOnOverlayClick
         center
-        classNames={{ modal: "modal_container" }}
+        classNames={{ modal: "modal_container", closeButton: "close_button" }}
       >
         <p>hello</p>
         <button onClick={closeModal}>is this the same?</button>
