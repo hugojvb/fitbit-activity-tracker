@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import Context from "../context/context";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
+import "../style/modals.css";
 
 const StepsModal = () => {
   const context = useContext(Context);
@@ -15,6 +16,7 @@ const StepsModal = () => {
         closeOnEsc
         closeOnOverlayClick
         center
+        classNames={{ modal: "modal_container" }}
       >
         <p>hello</p>
         <button onClick={closeModal}>is this the same?</button>
