@@ -7,3 +7,5 @@ export const GET_BODYWEIGHT = "GET_BODYWEIGHT";
 export const GET_SLEEP = "GET_SLEEP";
 export const GET_HEARTRATE = "GET_HEARTRATE";
 export const GET_FOOD = "GET_FOOD";
+export const OPEN_MODAL = "OPEN_MODAL";
+export const CLOSE_MODAL = "CLOSE_MODAL";

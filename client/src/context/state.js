@@ -11,6 +11,8 @@ import {
   GET_SLEEP,
   GET_HEARTRATE,
   GET_FOOD,
+  OPEN_MODAL,
+  CLOSE_MODAL,
 } from "./types";
 
 const State = (props) => {
@@ -22,6 +24,7 @@ const State = (props) => {
     bodyWeight: {},
     heartRate: {},
     food: {},
+    showModal: false,
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -63,6 +66,14 @@ const State = (props) => {
     dispatch({ type: GET_FOOD, payload: food });
   };
 
+  const openModal = () => {
+    dispatch({ type: OPEN_MODAL });
+  };
+
+  const closeModal = () => {
+    dispatch({ type: CLOSE_MODAL });
+  };
+
   return (
     <Context.Provider
       value={{
@@ -74,6 +85,7 @@ const State = (props) => {
         sleep: state.sleep,
         heartRate: state.heartRate,
         food: state.food,
+        showModal: state.showModal,
         login,
         logout,
         stopLoading,
@@ -83,6 +95,8 @@ const State = (props) => {
         getSleepState,
         getHeartRateState,
         getFoodState,
+        openModal,
+        closeModal,
       }}
     >
       {props.children}

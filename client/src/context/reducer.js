@@ -8,6 +8,8 @@ import {
   GET_SLEEP,
   GET_HEARTRATE,
   GET_FOOD,
+  OPEN_MODAL,
+  CLOSE_MODAL,
 } from "./types";
 
 export default (state, action) => {
@@ -56,6 +58,16 @@ export default (state, action) => {
       return {
         ...state,
         food: action.payload,
+      };
+    case OPEN_MODAL:
+      return {
+        ...state,
+        showModal: true,
+      };
+    case CLOSE_MODAL:
+      return {
+        ...state,
+        showModal: false,
       };
     default:
       return state;
