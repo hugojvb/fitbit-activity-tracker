@@ -2,25 +2,26 @@ import React, { useContext } from "react";
 import Context from "../context/context";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
+import "../style/modals.css";
 
-const GoalsModal = () => {
+const CalorieIntakeModal = () => {
   const context = useContext(Context);
-  const { showGoalsModal, closeGoalsModal } = context;
+  const { showCalorieIntakeModal, closeCalorieIntakeModal } = context;
 
   return (
     <div onClick={(e) => e.stopPropagation()}>
       <Modal
-        open={showGoalsModal}
-        onClose={closeGoalsModal}
+        open={showCalorieIntakeModal}
+        onClose={closeCalorieIntakeModal}
         closeOnEsc
         closeOnOverlayClick
         center
         classNames={{ modal: "modal_container", closeButton: "close_button" }}
       >
-        <p>context.activity.goals</p>
+        <p>hello</p>
       </Modal>
     </div>
   );
 };
 
-export default GoalsModal;
+export default CalorieIntakeModal;
