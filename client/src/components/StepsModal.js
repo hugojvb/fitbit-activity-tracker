@@ -7,6 +7,7 @@ import "../style/modals.css";
 const StepsModal = () => {
   const context = useContext(Context);
   const { showStepsModal, closeStepsModal } = context;
+  const { summary } = context.activity;
 
   return (
     <div onClick={(e) => e.stopPropagation()}>
@@ -18,7 +19,11 @@ const StepsModal = () => {
         center
         classNames={{ modal: "modal_container", closeButton: "close_button" }}
       >
-        <p>hello</p>
+        <p>Goals for Today</p>
+        <div className="modal_table">
+          <p>Total Steps Today</p>
+          <p>{summary.steps}</p>
+        </div>
       </Modal>
     </div>
   );

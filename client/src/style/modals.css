@@ -22,6 +22,10 @@
   visibility: hidden;
 }
 
+.close_button:hover {
+  background-color: aqua;
+}
+
 .modal_table {
   margin-top: 10vh;
   display: grid;
@@ -29,4 +33,10 @@
   grid-gap: 5vw;
   text-align: start;
   line-height: 2em;
+}
+
+@media (max-width: 500px) {
+  .minify {
+    display: none;
+  }
 }

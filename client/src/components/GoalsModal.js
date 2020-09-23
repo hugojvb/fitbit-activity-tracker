@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import Context from "../context/context";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
+import "../style/modals.css";
 
 const GoalsModal = () => {
   const context = useContext(Context);
@@ -11,11 +12,11 @@ const GoalsModal = () => {
   const formatKey = (key) => {
     switch (key) {
       case "caloriesOut":
-        return "Calories Out (kcal)";
+        return "Calories";
       case "activeMinutes":
-        return "Minutes Active (min)";
+        return "Activity";
       case "distance":
-        return "Distance (km)";
+        return "Distance";
       case "steps":
         return "Steps";
       case "floors":
@@ -27,13 +28,24 @@ const GoalsModal = () => {
 
   const goalProgress = (value) => {
     if (goals["caloriesOut"] === value) {
-      return <span>{summary.caloriesOut} </span>;
+      return (
+        <span>
+          {summary.caloriesOut}
+          <span className="minify">ckal</span>
+        </span>
+      );
     } else if (goals["activeMinutes"] === value) {
-      return <span>{summary.veryActiveMinutes}</span>;
+      return (
+        <span>
+          {summary.veryActiveMinutes}
+          <span className="minify">min</span>
+        </span>
+      );
     } else if (goals["distance"] === value) {
       return (
         <span>
-          {summary.distances.find((c) => c.activity === "total")["distance"]}{" "}
+          {summary.distances.find((c) => c.activity === "total")["distance"]}
+          <span className="minify">km</span>
         </span>
       );
     } else if (goals["steps"] === value) {
@@ -63,7 +75,8 @@ const GoalsModal = () => {
           <p>
             {Object.values(goals).map((value) => (
               <li key={value}>
-                {goalProgress(value)} / {value}
+                <span className="goals_progress">{goalProgress(value)} / </span>
+                {value}
               </li>
             ))}
           </p>

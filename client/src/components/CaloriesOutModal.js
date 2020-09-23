@@ -7,6 +7,7 @@ import "../style/modals.css";
 const CaloriesOutModal = () => {
   const context = useContext(Context);
   const { showCaloriesOutModal, closeCaloriesOutModal } = context;
+  const { summary } = context.activity;
 
   return (
     <div onClick={(e) => e.stopPropagation()}>
@@ -18,7 +19,11 @@ const CaloriesOutModal = () => {
         center
         classNames={{ modal: "modal_container", closeButton: "close_button" }}
       >
-        <p>hello</p>
+        <p>Calories Burned Today</p>
+        <div className="modal_table">
+          <p>Calories Out</p>
+          <p>{summary.caloriesOut} ckal</p>
+        </div>
       </Modal>
     </div>
   );

@@ -7,6 +7,7 @@ import "../style/modals.css";
 const CaloriesBMRModal = () => {
   const context = useContext(Context);
   const { showCaloriesBMRModal, closeCaloriesBMRModal } = context;
+  const { summary } = context.activity;
 
   return (
     <div onClick={(e) => e.stopPropagation()}>
@@ -18,7 +19,11 @@ const CaloriesBMRModal = () => {
         center
         classNames={{ modal: "modal_container", closeButton: "close_button" }}
       >
-        <p>hello</p>
+        <p>Base Metabolic Rate</p>
+        <div className="modal_table">
+          <p>BMR</p>
+          <p>{summary.caloriesBMR}</p>
+        </div>
       </Modal>
     </div>
   );

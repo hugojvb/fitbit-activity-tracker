@@ -146,6 +146,8 @@ const Grid = (props) => {
     return count;
   };
 
+  console.log(activity.summary);
+
   return loading === false ? (
     <Fragment>
       <div className="grid-container">
@@ -165,7 +167,7 @@ const Grid = (props) => {
         <div className="bg2" onClick={openCaloriesBMRModal}>
           <CaloriesBMRModal />
           <h2>{scope.includes("activity") && activity.summary.caloriesBMR}</h2>
-          <p>Base Metabolic Rate</p>
+          <p>BMR</p>
         </div>
         <div className="bg1" onClick={openStepsModal}>
           <StepsModal />
