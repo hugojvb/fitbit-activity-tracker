@@ -131,7 +131,20 @@ const Grid = (props) => {
     };
   }, []);
 
-  console.log(activity);
+  const goalsCompleted = (goals) => {
+    let count = 0;
+    if (activity.summary.veryActiveMinutes >= goals.activeMinutes) count++;
+    if (activity.summary.steps >= goals.steps) count++;
+    if (activity.summary.caloriesOut >= goals.caloriesOut) count++;
+    if (
+      activity.summary.distances.find((c) => c.activity === "total")[
+        "distance"
+      ] >= goals.distance
+    )
+      count++;
+    if (activity.summary.floors >= goals.floors) count++;
+    return count;
+  };
 
   return loading === false ? (
     <Fragment>
@@ -139,9 +152,10 @@ const Grid = (props) => {
         <div className="bg1" onClick={openGoalsModal}>
           <GoalsModal />
           <h2>
+            {goalsCompleted(activity.goals)} /{" "}
             {scope.includes("activity") && Object.keys(activity.goals).length}
           </h2>
-          <p>Goals</p>
+          <p>Goals for Today</p>
         </div>
         <div className="bg1" onClick={openCaloriesOutModal}>
           <CaloriesOutModal />

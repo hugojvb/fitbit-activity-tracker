@@ -11,35 +11,35 @@ const GoalsModal = () => {
   const formatKey = (key) => {
     switch (key) {
       case "caloriesOut":
-        return "Calories Out (Kcal)";
+        return "Calories Out (kcal)";
       case "activeMinutes":
-        return "Minutes Active (Minutes)";
+        return "Minutes Active (min)";
       case "distance":
-        return "Distance (Km)";
+        return "Distance (km)";
       case "steps":
         return "Steps";
       case "floors":
         return "Floors";
+      default:
+        return key;
     }
   };
 
   const goalProgress = (value) => {
-    for (const [key, value] of Object.entries(goals)) {
-      if (value === goals["caloriesOut"]) {
-        return <span>{summary.caloriesOut} </span>;
-      } else if (value === goals["activeMinutes"]) {
-        return <span>{summary.lightlyActiveMinutes}</span>;
-      } else if (value === goals["distance"]) {
-        return (
-          <span>
-            {summary.distances.find((c) => c.activity === "total")["distance"]}{" "}
-          </span>
-        );
-      } else if (value === goals["steps"]) {
-        return <span>{summary.steps}</span>;
-      } else if (value === goals["floors"]) {
-        return <span>{summary.floors}</span>;
-      }
+    if (goals["caloriesOut"] === value) {
+      return <span>{summary.caloriesOut} </span>;
+    } else if (goals["activeMinutes"] === value) {
+      return <span>{summary.veryActiveMinutes}</span>;
+    } else if (goals["distance"] === value) {
+      return (
+        <span>
+          {summary.distances.find((c) => c.activity === "total")["distance"]}{" "}
+        </span>
+      );
+    } else if (goals["steps"] === value) {
+      return <span>{summary.steps}</span>;
+    } else if (goals["floors"] === value) {
+      return <span>{summary.floors}</span>;
     }
   };
 
@@ -53,16 +53,16 @@ const GoalsModal = () => {
         center
         classNames={{ modal: "modal_container", closeButton: "close_button" }}
       >
-        <p>Daily Goals</p>
+        <p>Goals for Today</p>
         <div className="modal_table">
           <p>
             {Object.keys(goals).map((key) => (
-              <li>{formatKey(key)}</li>
+              <li key={key}>{formatKey(key)}</li>
             ))}
           </p>
           <p>
             {Object.values(goals).map((value) => (
-              <li>
+              <li key={value}>
                 {goalProgress(value)} / {value}
               </li>
             ))}
