@@ -10,12 +10,12 @@ p {
 }
 
 .bg1 {
-  background-image: url(../assets/bg1.jpg);
+  background-image: url(../assets/bg1.webp);
   background-size: cover;
 }
 
 .bg2 {
-  background-image: url(../assets/bg2.jpg);
+  background-image: url(../assets/bg2.webp);
   background-size: cover;
   filter: brightness(1.2);
   color: #222;
