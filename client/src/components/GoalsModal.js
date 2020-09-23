@@ -6,9 +6,42 @@ import "react-responsive-modal/styles.css";
 const GoalsModal = () => {
   const context = useContext(Context);
   const { showGoalsModal, closeGoalsModal } = context;
-  const { goals } = context.activity;
+  const { goals, summary } = context.activity;
 
-  console.log(context.activity.goals);
+  const formatKey = (key) => {
+    switch (key) {
+      case "caloriesOut":
+        return "Calories Out (Kcal)";
+      case "activeMinutes":
+        return "Minutes Active (Minutes)";
+      case "distance":
+        return "Distance (Km)";
+      case "steps":
+        return "Steps";
+      case "floors":
+        return "Floors";
+    }
+  };
+
+  const goalProgress = (value) => {
+    for (const [key, value] of Object.entries(goals)) {
+      if (value === goals["caloriesOut"]) {
+        return <span>{summary.caloriesOut} </span>;
+      } else if (value === goals["activeMinutes"]) {
+        return <span>{summary.lightlyActiveMinutes}</span>;
+      } else if (value === goals["distance"]) {
+        return (
+          <span>
+            {summary.distances.find((c) => c.activity === "total")["distance"]}{" "}
+          </span>
+        );
+      } else if (value === goals["steps"]) {
+        return <span>{summary.steps}</span>;
+      } else if (value === goals["floors"]) {
+        return <span>{summary.floors}</span>;
+      }
+    }
+  };
 
   return (
     <div onClick={(e) => e.stopPropagation()}>
@@ -20,16 +53,18 @@ const GoalsModal = () => {
         center
         classNames={{ modal: "modal_container", closeButton: "close_button" }}
       >
-        <p>Goals</p>
+        <p>Daily Goals</p>
         <div className="modal_table">
           <p>
             {Object.keys(goals).map((key) => (
-              <li>{key}</li>
+              <li>{formatKey(key)}</li>
             ))}
           </p>
           <p>
             {Object.values(goals).map((value) => (
-              <li>{value}</li>
+              <li>
+                {goalProgress(value)} / {value}
+              </li>
             ))}
           </p>
         </div>
