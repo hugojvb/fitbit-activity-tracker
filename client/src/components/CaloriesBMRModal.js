@@ -21,7 +21,7 @@ const CaloriesBMRModal = () => {
       >
         <p>Base Metabolic Rate</p>
         <div className="modal_table">
-          <p>BMR</p>
+          <p className="key">BMR</p>
           <p>{summary.caloriesBMR}</p>
         </div>
       </Modal>

@@ -14,7 +14,7 @@ const GoalsModal = () => {
       case "caloriesOut":
         return "Calories";
       case "activeMinutes":
-        return "Activity";
+        return "Min.Active";
       case "distance":
         return "Distance";
       case "steps":
@@ -28,24 +28,13 @@ const GoalsModal = () => {
 
   const goalProgress = (value) => {
     if (goals["caloriesOut"] === value) {
-      return (
-        <span>
-          {summary.caloriesOut}
-          <span className="minify">ckal</span>
-        </span>
-      );
+      return <span>{summary.caloriesOut}</span>;
     } else if (goals["activeMinutes"] === value) {
-      return (
-        <span>
-          {summary.veryActiveMinutes}
-          <span className="minify">min</span>
-        </span>
-      );
+      return <span>{summary.veryActiveMinutes}</span>;
     } else if (goals["distance"] === value) {
       return (
         <span>
           {summary.distances.find((c) => c.activity === "total")["distance"]}
-          <span className="minify">km</span>
         </span>
       );
     } else if (goals["steps"] === value) {
@@ -67,7 +56,7 @@ const GoalsModal = () => {
       >
         <p>Goals for Today</p>
         <div className="modal_table">
-          <p>
+          <p className="key">
             {Object.keys(goals).map((key) => (
               <li key={key}>{formatKey(key)}</li>
             ))}
@@ -75,7 +64,7 @@ const GoalsModal = () => {
           <p>
             {Object.values(goals).map((value) => (
               <li key={value}>
-                <span className="goals_progress">{goalProgress(value)} / </span>
+                <span className="minify">{goalProgress(value)} / </span>
                 {value}
               </li>
             ))}

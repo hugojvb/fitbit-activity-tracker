@@ -8,22 +8,20 @@
   padding: 25px;
   width: 60vw;
   height: 60vh;
-  color: rgba(0, 255, 255, 0.5);
   opacity: 0.8;
+  color: aqua;
 }
 
 .close_button {
-  background-color: #444;
-  border-radius: 5px;
-  border: 0.5px solid aqua;
-}
-
-.close_button:focus {
-  visibility: hidden;
+  background-color: #333;
 }
 
 .close_button:hover {
   background-color: aqua;
+}
+
+.close_button:focus {
+  visibility: hidden;
 }
 
 .modal_table {
@@ -33,6 +31,11 @@
   grid-gap: 5vw;
   text-align: start;
   line-height: 2em;
+  color: #fff;
+}
+
+.key {
+  color: aqua;
 }
 
 @media (max-width: 500px) {

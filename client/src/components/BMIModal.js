@@ -6,7 +6,7 @@ import "../style/modals.css";
 
 const BMIModal = () => {
   const context = useContext(Context);
-  const { showBMIModal, closeBMIModal } = context;
+  const { showBMIModal, closeBMIModal, bodyWeight } = context;
 
   return (
     <div onClick={(e) => e.stopPropagation()}>
@@ -18,7 +18,11 @@ const BMIModal = () => {
         center
         classNames={{ modal: "modal_container", closeButton: "close_button" }}
       >
-        <p>hello</p>
+        <p>Body Mass Index</p>
+        <div className="modal_table">
+          <p className="key">BMI</p>
+          <p>{bodyWeight.weight[bodyWeight.weight.length - 1]["bmi"]}</p>
+        </div>
       </Modal>
     </div>
   );

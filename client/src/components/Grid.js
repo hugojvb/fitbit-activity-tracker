@@ -146,7 +146,7 @@ const Grid = (props) => {
     return count;
   };
 
-  console.log(activity.summary);
+  console.log(activity);
 
   return loading === false ? (
     <Fragment>

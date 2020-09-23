@@ -6,7 +6,7 @@ import "../style/modals.css";
 
 const WeightModal = () => {
   const context = useContext(Context);
-  const { showWeightModal, closeWeightModal } = context;
+  const { showWeightModal, closeWeightModal, bodyWeight } = context;
 
   return (
     <div onClick={(e) => e.stopPropagation()}>
@@ -18,7 +18,11 @@ const WeightModal = () => {
         center
         classNames={{ modal: "modal_container", closeButton: "close_button" }}
       >
-        <p>hello</p>
+        <p>Weight</p>
+        <div className="modal_table">
+          <p className="key">Weight</p>
+          <p>{bodyWeight.weight[bodyWeight.weight.length - 1]["weight"]}</p>
+        </div>
       </Modal>
     </div>
   );

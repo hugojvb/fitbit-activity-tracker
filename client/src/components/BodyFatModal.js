@@ -6,7 +6,7 @@ import "../style/modals.css";
 
 const BodyFatModal = () => {
   const context = useContext(Context);
-  const { showBodyFatModal, closeBodyFatModal } = context;
+  const { showBodyFatModal, closeBodyFatModal, bodyFat } = context;
 
   return (
     <div onClick={(e) => e.stopPropagation()}>
@@ -18,7 +18,11 @@ const BodyFatModal = () => {
         center
         classNames={{ modal: "modal_container", closeButton: "close_button" }}
       >
-        <p>hello</p>
+        <p>Body Fat Percentage</p>
+        <div className="modal_table">
+          <p className="key">Body Fat</p>
+          <p>{bodyFat.fat[bodyFat.fat.length - 1]["fat"]}</p>
+        </div>
       </Modal>
     </div>
   );

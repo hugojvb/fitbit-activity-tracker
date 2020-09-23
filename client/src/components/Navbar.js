@@ -15,8 +15,8 @@ const Navbar = (props) => {
         <li>
           {activity.summary && (
             <h6 className="active">
-              Minutes you've been active today:{" "}
-              {activity.summary.lightlyActiveMinutes}
+              Minutes you've been very active today:{" "}
+              {activity.summary.veryActiveMinutes}
             </h6>
           )}
         </li>

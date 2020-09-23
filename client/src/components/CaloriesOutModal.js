@@ -21,8 +21,8 @@ const CaloriesOutModal = () => {
       >
         <p>Calories Burned Today</p>
         <div className="modal_table">
-          <p>Calories Out</p>
-          <p>{summary.caloriesOut} ckal</p>
+          <p className="key">Calories Out</p>
+          <p>{summary.caloriesOut}</p>
         </div>
       </Modal>
     </div>
