@@ -1,0 +1,18 @@
+{
+  "name": "Fitbit Activity Tracker",
+  "short_name": "FitTrack",
+  "lang": "English",
+  "theme_color": "#00fafa",
+  "background_color": "#333333",
+  "orientation": "portrait",
+  "display": "standalone",
+  "scope": "/",
+  "description": "This is an app that helps you track your activity with Fitbit!",
+  "start_url": "http://localhost:3000",
+  "icons": [
+    {
+      "src": "https://www.pngkey.com/png/detail/193-1935943_fitbit-logo-fitbit-ace-activity-tracker.png",
+      "sizes": "800x800"
+    }
+  ]
+}
