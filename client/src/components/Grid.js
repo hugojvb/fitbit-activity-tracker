@@ -2,7 +2,7 @@ import React, { useContext, useEffect, Fragment } from "react";
 import Context from "../context/context";
 import "../style/grid.css";
 import Loader from "./Loader";
-import { date } from "../util/date";
+import { date, previousWeek } from "../util/date";
 import axios from "axios";
 import * as queryString from "query-string";
 import GoalsModal from "./GoalsModal";
@@ -28,7 +28,6 @@ const Grid = (props) => {
     bodyFat,
     bodyWeight,
     sleep,
-    heartRate,
     food,
     getActivityState,
     getBodyFatState,
@@ -84,7 +83,7 @@ const Grid = (props) => {
         );
 
         const resSleep = await axios.get(
-          `https://api.fitbit.com/1.2/user/${user_id}/sleep/date/${date}.json`,
+          `https://api.fitbit.com/1.2/user/${user_id}/sleep/date/${previousWeek}/${date}.json`,
           {
             headers: {
               Authorization: `${token_type} ${access_token}`,
@@ -93,7 +92,7 @@ const Grid = (props) => {
         );
 
         const resHeartRate = await axios.get(
-          `https://api.fitbit.com/1/user/${user_id}/activities/heart/date/${date}/1w.json`,
+          `https://api.fitbit.com/1/user/${user_id}/activities/heart/date/${date}/1d.json`,
           {
             headers: {
               Authorization: `${token_type} ${access_token}`,
@@ -145,8 +144,6 @@ const Grid = (props) => {
     if (activity.summary.floors >= goals.floors) count++;
     return count;
   };
-
-  console.log(activity.summary);
 
   return loading === false ? (
     <Fragment>
@@ -232,10 +229,7 @@ const Grid = (props) => {
         <div className="bg2" onClick={openSleepModal}>
           <SleepModal />
           <i className="fas fa-bed fa-2x" />
-          <p>
-            {scope.includes("sleep") && sleep.summary.totalMinutesAsleep}{" "}
-            Minutes of Sleep
-          </p>
+          <p>{scope.includes("sleep") && sleep.sleep.length} Sleep Times</p>
         </div>
       </div>
     </Fragment>

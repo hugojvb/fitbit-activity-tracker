@@ -19,7 +19,7 @@ const CaloriesOutModal = () => {
         center
         classNames={{ modal: "modal_container", closeButton: "close_button" }}
       >
-        <p>Calories Burned Today</p>
+        <p>Calories Burned</p>
         <div className="modal_table">
           <p className="key">Calories Out</p>
           <p>{summary.caloriesOut}</p>

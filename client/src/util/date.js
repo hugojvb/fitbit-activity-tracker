@@ -12,3 +12,10 @@ const formatDate = (date) => {
 };
 
 export const date = formatDate(new Date());
+
+//Turning last week to YYYY-MM-DD (required for sleep logs)
+const dayZero = new Date();
+
+export const previousWeek = formatDate(
+  new Date(dayZero.getTime() - 7 * 24 * 60 * 60 * 1000)
+);

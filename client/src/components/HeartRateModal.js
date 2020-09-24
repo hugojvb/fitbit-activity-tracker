@@ -6,7 +6,7 @@ import "../style/modals.css";
 
 const HeartRateModal = () => {
   const context = useContext(Context);
-  const { showHeartRateModal, closeHeartRateModal } = context;
+  const { showHeartRateModal, closeHeartRateModal, heartRate } = context;
 
   return (
     <div onClick={(e) => e.stopPropagation()}>
@@ -18,7 +18,23 @@ const HeartRateModal = () => {
         center
         classNames={{ modal: "modal_container", closeButton: "close_button" }}
       >
-        <p>hello</p>
+        <p>HeartRate</p>
+        <div className="modal_table">
+          <p>
+            {heartRate["activities-heart"][
+              heartRate["activities-heart"].length - 1
+            ].value.heartRateZones.map((c) => (
+              <li key={c.name}>{c.name}</li>
+            ))}
+          </p>
+          <p>
+            {heartRate["activities-heart"][
+              heartRate["activities-heart"].length - 1
+            ].value.heartRateZones.map((c) => (
+              <li key={c.name}>{c.minutes} min</li>
+            ))}
+          </p>
+        </div>
       </Modal>
     </div>
   );

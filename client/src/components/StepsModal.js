@@ -19,7 +19,7 @@ const StepsModal = () => {
         center
         classNames={{ modal: "modal_container", closeButton: "close_button" }}
       >
-        <p>Total Steps Today</p>
+        <p>Total Steps</p>
         <div className="modal_table">
           <p className="key">Steps</p>
           <p>{summary.steps}</p>

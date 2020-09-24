@@ -8,6 +8,48 @@ const DistanceModal = () => {
   const context = useContext(Context);
   const { showDistanceModal, closeDistanceModal, activity } = context;
 
+  const formatKey = (key) => {
+    switch (key) {
+      case "total":
+        return;
+      case "lightlyActive":
+        return "Light";
+      case "moderatelyActive":
+        return "Moderate";
+      case "veryActive":
+        return "Intense";
+      case "sedentaryActive":
+        return;
+      case "loggedActivities":
+        return;
+      case "tracker":
+        return;
+      default:
+        return key;
+    }
+  };
+
+  const formatValue = (key, value) => {
+    switch (key) {
+      case "total":
+        return;
+      case "lightlyActive":
+        return value + " km";
+      case "moderatelyActive":
+        return value + " km";
+      case "veryActive":
+        return value + " km";
+      case "sedentaryActive":
+        return;
+      case "loggedActivities":
+        return;
+      case "tracker":
+        return;
+      default:
+        return value + " km";
+    }
+  };
+
   return (
     <div onClick={(e) => e.stopPropagation()}>
       <Modal
@@ -22,12 +64,12 @@ const DistanceModal = () => {
         <div className="modal_table">
           <p>
             {activity.summary.distances.map((c) => (
-              <li key={c.activity}>{c.activity}</li>
+              <li key={c.activity}>{formatKey(c.activity)}</li>
             ))}
           </p>
           <p>
             {activity.summary.distances.map((c) => (
-              <li key={c.activity}>{c.distance} km</li>
+              <li key={c.activity}>{formatValue(c.activity, c.distance)}</li>
             ))}
           </p>
         </div>
