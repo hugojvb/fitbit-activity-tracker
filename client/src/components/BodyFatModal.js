@@ -18,10 +18,18 @@ const BodyFatModal = () => {
         center
         classNames={{ modal: "modal_container", closeButton: "close_button" }}
       >
-        <p>Body Fat Percentage</p>
+        <p>Progress this Week</p>
         <div className="modal_table">
-          <p className="key">Body Fat</p>
-          <p>{bodyFat.fat[bodyFat.fat.length - 1]["fat"]}</p>
+          <p>
+            {bodyFat.fat.map((c) => (
+              <li key={c.date}>{c.date.substring(5)}</li>
+            ))}
+          </p>
+          <p>
+            {bodyFat.fat.map((c) => (
+              <li key={c.date}>{c.fat}</li>
+            ))}
+          </p>
         </div>
       </Modal>
     </div>

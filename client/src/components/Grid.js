@@ -66,7 +66,7 @@ const Grid = (props) => {
         );
 
         const resBodyFat = await axios.get(
-          `https://api.fitbit.com/1/user/${user_id}/body/log/fat/date/${date}/1m.json`,
+          `https://api.fitbit.com/1/user/${user_id}/body/log/fat/date/${date}/1w.json`,
           {
             headers: {
               Authorization: `${token_type} ${access_token}`,
@@ -75,7 +75,7 @@ const Grid = (props) => {
         );
 
         const resBodyWeight = await axios.get(
-          `https://api.fitbit.com/1/user/${user_id}/body/log/weight/date/${date}/1m.json`,
+          `https://api.fitbit.com/1/user/${user_id}/body/log/weight/date/${date}/1w.json`,
           {
             headers: {
               Authorization: `${token_type} ${access_token}`,
@@ -146,7 +146,7 @@ const Grid = (props) => {
     return count;
   };
 
-  console.log(activity);
+  console.log(activity.summary);
 
   return loading === false ? (
     <Fragment>

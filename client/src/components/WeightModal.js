@@ -18,10 +18,18 @@ const WeightModal = () => {
         center
         classNames={{ modal: "modal_container", closeButton: "close_button" }}
       >
-        <p>Weight</p>
+        <p>Progress This Week</p>
         <div className="modal_table">
-          <p className="key">Weight</p>
-          <p>{bodyWeight.weight[bodyWeight.weight.length - 1]["weight"]}</p>
+          <p>
+            {bodyWeight.weight.map((c) => (
+              <li key={c.date}>{c.date.substring(5)}</li>
+            ))}
+          </p>
+          <p>
+            {bodyWeight.weight.map((c) => (
+              <li key={c.date}>{c.weight}</li>
+            ))}
+          </p>
         </div>
       </Modal>
     </div>

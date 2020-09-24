@@ -18,10 +18,18 @@ const BMIModal = () => {
         center
         classNames={{ modal: "modal_container", closeButton: "close_button" }}
       >
-        <p>Body Mass Index</p>
+        <p>Progress this Week</p>
         <div className="modal_table">
-          <p className="key">BMI</p>
-          <p>{bodyWeight.weight[bodyWeight.weight.length - 1]["bmi"]}</p>
+          <p>
+            {bodyWeight.weight.map((c) => (
+              <li key={c.date}>{c.date.substring(5)}</li>
+            ))}
+          </p>
+          <p>
+            {bodyWeight.weight.map((c) => (
+              <li key={c.date}>{c.bmi}</li>
+            ))}
+          </p>
         </div>
       </Modal>
     </div>
