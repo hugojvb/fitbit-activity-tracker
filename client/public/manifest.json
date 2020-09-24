@@ -5,7 +5,7 @@
   "theme_color": "#00fafa",
   "background_color": "#333333",
   "orientation": "portrait",
-  "display": "standalone",
+  "display": "minimal-ui",
   "scope": "/",
   "description": "This is an app that helps you track your activity with Fitbit!",
   "start_url": "http://localhost:3000",

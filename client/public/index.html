@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#000000" />
     <meta name="description" content="Web site to track your workouts" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon.ico" />
-    <link rel="manifest" href="./manifest.json" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <script
       src="https://kit.fontawesome.com/22d7b4820a.js"
       crossorigin="anonymous"
@@ -17,5 +17,14 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <script>
+      if (!navigator.serviceWorker.controller) {
+        navigator.serviceWorker.register("/sw.js").then(function (reg) {
+          console.log(
+            "Service worker has been registered for scope: " + reg.scope
+          );
+        });
+      }
+    </script>
   </body>
 </html>
