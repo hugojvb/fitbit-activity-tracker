@@ -12,7 +12,9 @@
   "icons": [
     {
       "src": "https://www.pngkey.com/png/detail/193-1935943_fitbit-logo-fitbit-ace-activity-tracker.png",
-      "sizes": "800x800"
+      "sizes": "750x750",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }
