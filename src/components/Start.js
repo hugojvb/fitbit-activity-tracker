@@ -14,7 +14,7 @@ const Start = (props) => {
             rel="noopener noreferrer"
             target="_blank"
             className="btn"
-            href="https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=22BRPY&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fgrid&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800"
+            href="https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=22BRPY&redirect_uri=https%3A%2F%2Fpeaceful-darwin-1a89b0.netlify.app%2Fgrid&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800"
           >
             <p>Let's Start</p>
           </a>
