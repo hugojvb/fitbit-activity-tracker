@@ -11,8 +11,8 @@
   "start_url": "/",
   "icons": [
     {
-      "src": "https://www.pngkey.com/png/detail/193-1935943_fitbit-logo-fitbit-ace-activity-tracker.png",
-      "sizes": "590x590",
+      "src": "../src/assets/logo.png",
+      "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     }
