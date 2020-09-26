@@ -8,10 +8,11 @@
   "display": "minimal-ui",
   "scope": "/",
   "description": "This is an app that helps you track your activity with Fitbit!",
+  "start_url": "/",
   "icons": [
     {
       "src": "https://www.pngkey.com/png/detail/193-1935943_fitbit-logo-fitbit-ace-activity-tracker.png",
-      "sizes": "750x750",
+      "sizes": "590x590",
       "type": "image/png",
       "purpose": "any maskable"
     }

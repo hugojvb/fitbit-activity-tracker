@@ -38,4 +38,3 @@ this.addEventListener('activate', (event) => {
       ))
   )
 });
-
