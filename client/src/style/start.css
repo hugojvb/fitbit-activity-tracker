@@ -16,6 +16,13 @@ article {
   padding: 25px;
 }
 
+.start__exp {
+  margin-top: 30px;
+  font-weight: 400;
+  font-size: medium;
+  margin-bottom: 15px;
+}
+
 .btn {
   background: linear-gradient(90deg, #333, #222);
   border: 1px solid #111;
@@ -43,9 +50,4 @@ a {
   padding: 10px;
 }
 
-.start__exp {
-  margin-top: 30px;
-  font-weight: 400;
-  font-size: medium;
-  margin-bottom: 15px;
-}
+
