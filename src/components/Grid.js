@@ -151,7 +151,7 @@ const Grid = (props) => {
     <Fragment>
       <div className="grid-container">
         <div className="bg1" onClick={openGoalsModal}>
-          <Suspense falback={<div>Loading...</div>}>
+          <Suspense fallback={<Loader />}>
             <GoalsModal />
           </Suspense>
           <h2>
@@ -161,28 +161,28 @@ const Grid = (props) => {
           <p>Goals for Today</p>
         </div>
         <div className="bg1" onClick={openCaloriesOutModal}>
-          <Suspense falback={<div>Loading...</div>}>
+          <Suspense fallback={<Loader />}>
             <CaloriesOutModal />
           </Suspense>
           <h2>{scope.includes("activity") && activity.summary.caloriesOut}</h2>
           <p>Calories Out</p>
         </div>
         <div className="bg2" onClick={openCaloriesBMRModal}>
-          <Suspense falback={<div>Loading...</div>}>
+          <Suspense fallback={<Loader />}>
             <CaloriesBMRModal />
           </Suspense>
           <h2>{scope.includes("activity") && activity.summary.caloriesBMR}</h2>
           <p>BMR</p>
         </div>
         <div className="bg1" onClick={openStepsModal}>
-          <Suspense falback={<div>Loading...</div>}>
+          <Suspense fallback={<Loader />}>
             <StepsModal />
           </Suspense>
           <i className="fas fa-shoe-prints fa-2x" />
           <p>Steps: {scope.includes("activity") && activity.summary.steps}</p>
         </div>
         <div className="bg1" onClick={openBMIModal}>
-          <Suspense falback={<div>Loading...</div>}>
+          <Suspense fallback={<Loader />}>
             <BMIModal />
           </Suspense>
           <i className="fas fa-child fa-2x" />
@@ -193,7 +193,7 @@ const Grid = (props) => {
           </p>
         </div>
         <div className="bg2" onClick={openDistanceModal}>
-          <Suspense falback={<div>Loading...</div>}>
+          <Suspense fallback={<Loader />}>
             <DistanceModal />
           </Suspense>
           <i className="fas fa-running fa-2x" />
@@ -207,7 +207,7 @@ const Grid = (props) => {
           </h4>
         </div>
         <div className="bg1" onClick={openCalorieIntakeModal}>
-          <Suspense falback={<div>Loading...</div>}>
+          <Suspense fallback={<Loader />}>
             <CalorieIntakeModal />
           </Suspense>
           <i className="fas fa-utensils fa-2x" />
@@ -217,7 +217,7 @@ const Grid = (props) => {
           </p>
         </div>
         <div className="bg2" onClick={openWeightModal}>
-          <Suspense falback={<div>Loading...</div>}>
+          <Suspense fallback={<Loader />}>
             <WeightModal />
           </Suspense>
           <h2>
@@ -227,7 +227,7 @@ const Grid = (props) => {
           <p>(Kg)</p>
         </div>
         <div className="bg2" onClick={openBodyFatModal}>
-          <Suspense falback={<div>Loading...</div>}>
+          <Suspense fallback={<Loader />}>
             <BodyFatModal />
           </Suspense>
           <h2>
@@ -237,21 +237,21 @@ const Grid = (props) => {
           <p>(Body Fat %)</p>
         </div>
         <div className="bg1" onClick={openActivityModal}>
-          <Suspense falback={<div>Loading...</div>}>
+          <Suspense fallback={<Loader />}>
             <ActivityModal />
           </Suspense>
           <i className="fas fa-history fa-2x" />
           <p>Activity</p>
         </div>
         <div className="bg2" onClick={openHeartRateModal}>
-          <Suspense falback={<div>Loading...</div>}>
+          <Suspense fallback={<Loader />}>
             <HeartRateModal />
           </Suspense>
           <i className="fas fa-heartbeat fa-2x" />
           <p>Heart Rate</p>
         </div>
         <div className="bg2" onClick={openSleepModal}>
-          <Suspense falback={<div>Loading...</div>}>
+          <Suspense fallback={<Loader />}>
             <SleepModal />
           </Suspense>
           <i className="fas fa-bed fa-2x" />
