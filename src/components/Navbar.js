@@ -22,7 +22,7 @@ const Navbar = (props) => {
         </li>
         <li>
           {logged_in && (
-            <a href="http://localhost:3000/" className="signout">
+            <a href="https://peaceful-darwin-1a89b0.netlify.app/" className="signout">
               <h4>Log Out</h4>
             </a>
           )}
