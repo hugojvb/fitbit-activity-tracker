@@ -12,7 +12,6 @@ const Start = (props) => {
           </h6>
           <a
             rel="noopener noreferrer"
-            target="_blank"
             className="btn"
             href="https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=22BRPY&redirect_uri=https%3A%2F%2Fpeaceful-darwin-1a89b0.netlify.app%2Fgrid&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800"
           >
