@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, Fragment } from "react";
+import React, { useContext, useEffect, Fragment, lazy, Suspense } from "react";
 import Context from "../context/context";
 import "../style/grid.css";
 import Loader from "./Loader";
@@ -6,18 +6,18 @@ import { date, previousWeek } from "../util/date";
 import axios from "axios";
 import * as queryString from "query-string";
 
-import GoalsModal from "./GoalsModal";
-import CaloriesOutModal from "./CaloriesOutModal";
-import CaloriesBMRModal from "./CaloriesBMRModal";
-import StepsModal from "./StepsModal";
-import BMIModal from "./BMIModal";
-import DistanceModal from "./DistanceModal";
-import CalorieIntakeModal from "./CalorieIntakeModal";
-import WeightModal from "./WeightModal";
-import BodyFatModal from "./BodyFatModal";
-import ActivityModal from "./ActivityModal";
-import HeartRateModal from "./HeartRateModal";
-import SleepModal from "./SleepModal";
+const GoalsModal = lazy(() => import("./GoalsModal"));
+const CaloriesOutModal = lazy(() => import("./CaloriesOutModal"));
+const CaloriesBMRModal = lazy(() => import("./CaloriesBMRModal"));
+const StepsModal = lazy(() => import("./StepsModal"));
+const BMIModal = lazy(() => import("./BMIModal"));
+const DistanceModal = lazy(() => import("./DistanceModal"));
+const CalorieIntakeModal = lazy(() => import("./CalorieIntakeModal"));
+const WeightModal = lazy(() => import("./WeightModal"));
+const BodyFatModal = lazy(() => import("./BodyFatModal"));
+const ActivityModal = lazy(() => import("./ActivityModal"));
+const HeartRateModal = lazy(() => import("./HeartRateModal"));
+const SleepModal = lazy(() => import("./SleepModal"));
 
 const Grid = (props) => {
   const context = useContext(Context);
@@ -138,7 +138,7 @@ const Grid = (props) => {
     if (activity.summary.caloriesOut >= goals.caloriesOut) count++;
     if (
       activity.summary.distances.find((c) => c.activity === "total")[
-      "distance"
+        "distance"
       ] >= goals.distance
     )
       count++;
@@ -150,7 +150,6 @@ const Grid = (props) => {
     <Fragment>
       <div className="grid-container">
         <div className="bg1" onClick={openGoalsModal}>
-          <GoalsModal />
           <h2>
             {goalsCompleted(activity.goals)} /{" "}
             {scope.includes("activity") && Object.keys(activity.goals).length}
@@ -158,22 +157,18 @@ const Grid = (props) => {
           <p>Goals for Today</p>
         </div>
         <div className="bg1" onClick={openCaloriesOutModal}>
-          <CaloriesOutModal />
           <h2>{scope.includes("activity") && activity.summary.caloriesOut}</h2>
           <p>Calories Out</p>
         </div>
         <div className="bg2" onClick={openCaloriesBMRModal}>
-          <CaloriesBMRModal />
           <h2>{scope.includes("activity") && activity.summary.caloriesBMR}</h2>
           <p>BMR</p>
         </div>
         <div className="bg1" onClick={openStepsModal}>
-          <StepsModal />
           <i className="fas fa-shoe-prints fa-2x" />
           <p>Steps: {scope.includes("activity") && activity.summary.steps}</p>
         </div>
         <div className="bg1" onClick={openBMIModal}>
-          <BMIModal />
           <i className="fas fa-child fa-2x" />
           <p>
             BMI:{" "}
@@ -182,19 +177,17 @@ const Grid = (props) => {
           </p>
         </div>
         <div className="bg2" onClick={openDistanceModal}>
-          <DistanceModal />
           <i className="fas fa-running fa-2x" />
           <h4>
             Total Distance Today:{" "}
             {scope.includes("activity") &&
               activity.summary.distances.find((c) => c.activity === "total")[
-              "distance"
+                "distance"
               ]}{" "}
             Km
           </h4>
         </div>
         <div className="bg1" onClick={openCalorieIntakeModal}>
-          <CalorieIntakeModal />
           <i className="fas fa-utensils fa-2x" />
           <p>
             Calorie Intake:{" "}
@@ -202,7 +195,6 @@ const Grid = (props) => {
           </p>
         </div>
         <div className="bg2" onClick={openWeightModal}>
-          <WeightModal />
           <h2>
             {scope.includes("weight") &&
               bodyWeight.weight[bodyWeight.weight.length - 1]["weight"]}
@@ -210,7 +202,6 @@ const Grid = (props) => {
           <p>(Kg)</p>
         </div>
         <div className="bg2" onClick={openBodyFatModal}>
-          <BodyFatModal />
           <h2>
             {scope.includes("weight") &&
               bodyFat.fat[bodyFat.fat.length - 1]["fat"]}
@@ -218,25 +209,36 @@ const Grid = (props) => {
           <p>(Body Fat %)</p>
         </div>
         <div className="bg1" onClick={openActivityModal}>
-          <ActivityModal />
           <i className="fas fa-history fa-2x" />
           <p>Activity</p>
         </div>
         <div className="bg2" onClick={openHeartRateModal}>
-          <HeartRateModal />
           <i className="fas fa-heartbeat fa-2x" />
           <p>Heart Rate</p>
         </div>
         <div className="bg2" onClick={openSleepModal}>
-          <SleepModal />
           <i className="fas fa-bed fa-2x" />
           <p>{scope.includes("sleep") && sleep.sleep.length} Sleep Times</p>
         </div>
       </div>
+      <Suspense fallback={<Loader />}>
+        <GoalsModal />
+        <CaloriesOutModal />
+        <CaloriesBMRModal />
+        <StepsModal />
+        <BMIModal />
+        <DistanceModal />
+        <CalorieIntakeModal />
+        <WeightModal />
+        <BodyFatModal />
+        <ActivityModal />
+        <HeartRateModal />
+        <SleepModal />
+      </Suspense>
     </Fragment>
   ) : (
-      <Loader />
-    );
+    <Loader />
+  );
 };
 
 export default Grid;
