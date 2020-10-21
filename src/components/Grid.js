@@ -56,59 +56,41 @@ const Grid = (props) => {
     let shouldFetch = true;
     const getData = async () => {
       try {
-        const resActivity = await axios.get(
-          `https://api.fitbit.com/1/user/${user_id}/activities/date/${date}.json`,
-          {
-            headers: {
-              Authorization: `${token_type} ${access_token}`,
-            },
-          }
-        );
+        const resActivity = await axios.get(`https://api.fitbit.com/1/user/${user_id}/activities/date/${date}.json`, {
+          headers: {
+            Authorization: `${token_type} ${access_token}`,
+          },
+        });
 
-        const resBodyFat = await axios.get(
-          `https://api.fitbit.com/1/user/${user_id}/body/log/fat/date/${date}/1w.json`,
-          {
-            headers: {
-              Authorization: `${token_type} ${access_token}`,
-            },
-          }
-        );
+        const resBodyFat = await axios.get(`https://api.fitbit.com/1/user/${user_id}/body/log/fat/date/${date}/1w.json`, {
+          headers: {
+            Authorization: `${token_type} ${access_token}`,
+          },
+        });
 
-        const resBodyWeight = await axios.get(
-          `https://api.fitbit.com/1/user/${user_id}/body/log/weight/date/${date}/1w.json`,
-          {
-            headers: {
-              Authorization: `${token_type} ${access_token}`,
-            },
-          }
-        );
+        const resBodyWeight = await axios.get(`https://api.fitbit.com/1/user/${user_id}/body/log/weight/date/${date}/1w.json`, {
+          headers: {
+            Authorization: `${token_type} ${access_token}`,
+          },
+        });
 
-        const resSleep = await axios.get(
-          `https://api.fitbit.com/1.2/user/${user_id}/sleep/date/${previousWeek}/${date}.json`,
-          {
-            headers: {
-              Authorization: `${token_type} ${access_token}`,
-            },
-          }
-        );
+        const resSleep = await axios.get(`https://api.fitbit.com/1.2/user/${user_id}/sleep/date/${previousWeek}/${date}.json`, {
+          headers: {
+            Authorization: `${token_type} ${access_token}`,
+          },
+        });
 
-        const resHeartRate = await axios.get(
-          `https://api.fitbit.com/1/user/${user_id}/activities/heart/date/${date}/1d.json`,
-          {
-            headers: {
-              Authorization: `${token_type} ${access_token}`,
-            },
-          }
-        );
+        const resHeartRate = await axios.get(`https://api.fitbit.com/1/user/${user_id}/activities/heart/date/${date}/1d.json`, {
+          headers: {
+            Authorization: `${token_type} ${access_token}`,
+          },
+        });
 
-        const resFood = await axios.get(
-          `https://api.fitbit.com/1/user/${user_id}/foods/log/date/${date}.json`,
-          {
-            headers: {
-              Authorization: `${token_type} ${access_token}`,
-            },
-          }
-        );
+        const resFood = await axios.get(`https://api.fitbit.com/1/user/${user_id}/foods/log/date/${date}.json`, {
+          headers: {
+            Authorization: `${token_type} ${access_token}`,
+          },
+        });
 
         if (shouldFetch) {
           getActivityState(await resActivity.data);
@@ -136,12 +118,7 @@ const Grid = (props) => {
     if (activity.summary.veryActiveMinutes >= goals.activeMinutes) count++;
     if (activity.summary.steps >= goals.steps) count++;
     if (activity.summary.caloriesOut >= goals.caloriesOut) count++;
-    if (
-      activity.summary.distances.find((c) => c.activity === "total")[
-        "distance"
-      ] >= goals.distance
-    )
-      count++;
+    if (activity.summary.distances.find((c) => c.activity === "total")["distance"] >= goals.distance) count++;
     if (activity.summary.floors >= goals.floors) count++;
     return count;
   };
@@ -151,8 +128,7 @@ const Grid = (props) => {
       <div className="grid-container">
         <div className="bg1" onClick={openGoalsModal}>
           <h2>
-            {goalsCompleted(activity.goals)} /{" "}
-            {scope.includes("activity") && Object.keys(activity.goals).length}
+            {goalsCompleted(activity.goals)} / {scope.includes("activity") && Object.keys(activity.goals).length}
           </h2>
           <p>Goals for Today</p>
         </div>
@@ -170,42 +146,22 @@ const Grid = (props) => {
         </div>
         <div className="bg1" onClick={openBMIModal}>
           <i className="fas fa-child fa-2x" />
-          <p>
-            BMI:{" "}
-            {scope.includes("weight") &&
-              bodyWeight.weight[bodyWeight.weight.length - 1]["bmi"]}
-          </p>
+          <p>BMI: {bodyWeight.weight.length > 0 && scope.includes("weight") && bodyWeight.weight[bodyWeight.weight.length - 1]["bmi"]}</p>
         </div>
         <div className="bg2" onClick={openDistanceModal}>
           <i className="fas fa-running fa-2x" />
-          <h4>
-            Total Distance Today:{" "}
-            {scope.includes("activity") &&
-              activity.summary.distances.find((c) => c.activity === "total")[
-                "distance"
-              ]}{" "}
-            Km
-          </h4>
+          <h4>Total Distance Today: {scope.includes("activity") && activity.summary.distances.find((c) => c.activity === "total")["distance"]} Km</h4>
         </div>
         <div className="bg1" onClick={openCalorieIntakeModal}>
           <i className="fas fa-utensils fa-2x" />
-          <p>
-            Calorie Intake:{" "}
-            {scope.includes("nutrition") && food.summary.calories} Kcal
-          </p>
+          <p>Calorie Intake: {scope.includes("nutrition") && food.summary.calories} Kcal</p>
         </div>
         <div className="bg2" onClick={openWeightModal}>
-          <h2>
-            {scope.includes("weight") &&
-              bodyWeight.weight[bodyWeight.weight.length - 1]["weight"]}
-          </h2>
+          <h2>{bodyWeight.weight.length > 0 && scope.includes("weight") && bodyWeight.weight[bodyWeight.weight.length - 1]["weight"]}</h2>
           <p>(Kg)</p>
         </div>
         <div className="bg2" onClick={openBodyFatModal}>
-          <h2>
-            {scope.includes("weight") &&
-              bodyFat.fat[bodyFat.fat.length - 1]["fat"]}
-          </h2>
+          <h2>{bodyFat.fat.length > 0 && scope.includes("weight") && bodyFat.fat[bodyFat.fat.length - 1]["fat"]}</h2>
           <p>(Body Fat %)</p>
         </div>
         <div className="bg1" onClick={openActivityModal}>
